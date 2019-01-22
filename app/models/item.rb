@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :category, presence: true, format: { with: /\A[a-zA-Z0-9+\s]+\z/, message: "Only alpha-numeric characters" }, length: { in: 3..30 }, on: :create
   belongs_to :brand
   validates :brand, presence: true, format: { with: /\A[a-zA-Z0-9+\s]+\z/, message: "Only alpha-numeric characters" }, length: { in: 3..30 }, on: :create
-  has_many :cart_items, optional: true, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :sizes, through: :stocks
 end
