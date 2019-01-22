@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :image_url
       t.text :description
-      t.decimal :price, null: false, precision: 2
+      t.decimal :price, null: false, precision: 7, scale: 2
       t.boolean :has_discount, default: false
       t.boolean :male
       t.boolean :female

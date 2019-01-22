@@ -14,7 +14,6 @@
 #  updated_at :datetime         not null
 #
 
-
 class CartItem < ApplicationRecord
   belongs_to :item
   validates :item, presence: true, on: :create
