@@ -3,6 +3,9 @@
 Module Admins < Devise::SessionsController
 
 class SessionsController
+  include Accessible
+  skip_before_action :check_user, only: :destroy
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -16,9 +19,9 @@ class SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # protected
 
@@ -26,9 +29,4 @@ class SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-  include Accessible
-  skip_before_action :check_user, only: :destroy
-
-  def destroy; end
 end

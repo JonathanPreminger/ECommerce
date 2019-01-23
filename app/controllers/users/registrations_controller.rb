@@ -3,18 +3,20 @@
 Module Users < Devise::RegistrationsController
 
 class RegistrationsController
+  include Accessible
+  skip_before_action :check_user, except: %i[new create]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -28,7 +30,7 @@ class RegistrationsController
 
   # DELETE /resource
   # def destroy
-  #   super
+  #  super
   # end
 
   # GET /resource/cancel
@@ -61,10 +63,4 @@ class RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  include Accessible
-  skip_before_action :check_user, except: %i[new create]
-
-  def new; end
-
-  def create; end
 end
