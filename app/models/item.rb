@@ -8,7 +8,7 @@
 #  name                :string
 #  image_url           :string
 #  description         :text
-#  price               :decimal(7, 2)    not null
+#  price               :decimal(7, 2)
 #  has_discount        :boolean          default(FALSE)
 #  male                :boolean
 #  female              :boolean
