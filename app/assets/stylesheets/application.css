@@ -10,6 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require custom-style
+ *= require boomerang.min
+ *= require bootstrap.min
+ *= require animate.min
+ *= require hamburgers.min
+ *= require jquery.fancybox.min
+ *= require swiper.min
  *= require_self
+ *= require_tree .
  */
