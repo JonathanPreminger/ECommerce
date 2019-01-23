@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ../controllers/concerns/accessible.rb
 module Accessible
   extend ActiveSupport::Concern
@@ -6,6 +8,7 @@ module Accessible
   end
 
   protected
+
   def check_user
     if current_admin
       flash.clear

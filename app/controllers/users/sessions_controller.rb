@@ -1,5 +1,8 @@
 # frozen_string_literal: true
-class Users::SessionsController < Devise::SessionsController
+
+Module Users < Devise::SessionsController
+
+class SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -25,5 +28,8 @@ class Users::SessionsController < Devise::SessionsController
   # end
   include Accessible
   skip_before_action :check_user, only: :destroy
+
+  def destroy
+  end
   # ...
 end

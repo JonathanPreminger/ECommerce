@@ -1,5 +1,8 @@
 # frozen_string_literal: true
-class Admins::SessionsController < Devise::SessionsController
+
+Module Admins < Devise::SessionsController
+
+class SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,8 +27,8 @@ class Admins::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-
   include Accessible
   skip_before_action :check_user, only: :destroy
-  # ...
+
+  def destroy; end
 end
