@@ -13,5 +13,6 @@
 
 FactoryBot.define do
   factory :cart do
+    total { Faker::Number.decimal(4, 2) }
   end
 end
