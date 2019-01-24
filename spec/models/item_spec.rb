@@ -82,7 +82,7 @@ RSpec.describe Item, type: :model do
 
   context 'when creating an item' do
     before do
-      create(:item_test)
+      FactoryBot.create(:item, name: "Jeans")
     end
 
     it 'returns items matching with name' do
