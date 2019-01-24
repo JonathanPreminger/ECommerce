@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_112627) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.decimal "total"
+    t.decimal "total", default: "0.0"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
