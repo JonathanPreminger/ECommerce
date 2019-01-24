@@ -25,6 +25,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one :cart, dependent: :destroy
-  validates :cart, presence: true
   has_many :orders, through: :cart
 end
