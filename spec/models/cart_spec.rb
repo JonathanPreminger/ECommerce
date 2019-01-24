@@ -34,7 +34,7 @@ RSpec.describe Cart, type: :model do
 
   context 'when testing validations' do
     it { is_expected.to validate_presence_of(:user).on(:create) }
-    it { is_expected.to validate_numericality_of(:total).is_greater_than(0) }
+    it { is_expected.to validate_numericality_of(:total).is_greater_than_or_equal_to(0) }
   end
 
   context 'when destroying cart' do
