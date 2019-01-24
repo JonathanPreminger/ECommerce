@@ -79,4 +79,18 @@ RSpec.describe Item, type: :model do
       expect { item.destroy }.not_to change(Size, :count)
     end
   end
+
+  context 'when creating an item' do
+    before do
+      FactoryBot.create(:item, name: "Jeans")
+    end
+
+    it 'returns items matching with name' do
+      expect(Item.where(name: "Jeans").size).to eq(1)
+    end
+
+    it 'returns nothing when name doesnt match' do
+      expect(Item.where(name: "Jean's").size).to eq(0)
+    end
+  end
 end
