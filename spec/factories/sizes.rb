@@ -12,5 +12,6 @@
 
 FactoryBot.define do
   factory :size do
+    value { ["S", "M", "L", "XL"].sample }
   end
 end

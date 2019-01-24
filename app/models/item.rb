@@ -8,7 +8,7 @@
 #  name                :string
 #  image_url           :string
 #  description         :text
-#  price               :decimal(7, 2)    not null
+#  price               :decimal(7, 2)
 #  has_discount        :boolean          default(FALSE)
 #  male                :boolean
 #  female              :boolean
@@ -22,8 +22,8 @@
 class Item < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0 }, on: :create
   validates :discount_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9+\s]+\z/, message: "Only alpha-numeric characters" }, length: { in: 3..30 }, on: :create
-  validates :description, presence: true, length: { in: 10..500, message: "Between 10 and 500 characters" }, on: :create
+  validates :name, presence: true, uniqueness: true, case_sensitive: false, format: { with: /\A[\x20-\x7E]+\z/, message: "Only alpha-numeric characters" }, length: { in: 3..30 }, on: :create
+  validates :description, presence: true, length: { in: 10..500 }, on: :create
   belongs_to :category
   validates :category, presence: true, on: :create
   belongs_to :brand
