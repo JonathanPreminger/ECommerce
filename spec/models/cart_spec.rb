@@ -36,4 +36,13 @@ RSpec.describe Cart, type: :model do
     it { is_expected.to validate_presence_of(:user).on(:create) }
     it { is_expected.to validate_numericality_of(:total).is_greater_than(0) }
   end
+
+  context 'when destroying cart' do
+  	let(:cart) { create(:cart) }
+
+  	it 'destroys its cartItems upon delection' do
+  	  create_list(:cart_item, 1, cart: cart)
+  	  expect { cart.destroy }.to change(CartItem, :count).from(cart.cart_items.count).to(0)
+  	end
+  end
 end
