@@ -68,5 +68,18 @@ FactoryBot.define do
     factory :item_without_discount_female, traits: %i[without_discount female_clothe]
 
     factory :item_without_discount_unisex, traits: %i[without_discount unisex]
+
+    factory :item_test do
+      price { 10 }
+      name { "Jeans" }
+      image_url { Faker::SiliconValley.url }
+      description { Faker::SiliconValley.quote }
+      category
+      brand
+      has_discount { true }
+      discount_percentage { 50 }
+      male { true }
+      female { false }
+    end
   end
 end
