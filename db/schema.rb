@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_112627) do
     t.string "name"
     t.string "image_url"
     t.text "description"
-    t.decimal "price", precision: 7, scale: 2, null: false
+    t.decimal "price", precision: 7, scale: 2
     t.boolean "has_discount", default: false
     t.boolean "male"
     t.boolean "female"

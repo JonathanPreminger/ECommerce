@@ -12,5 +12,6 @@
 
 FactoryBot.define do
   factory :category do
+    name { Faker::SiliconValley.app }
   end
 end

@@ -12,5 +12,6 @@
 
 FactoryBot.define do
   factory :brand do
+    name { Faker::SiliconValley.company }
   end
 end

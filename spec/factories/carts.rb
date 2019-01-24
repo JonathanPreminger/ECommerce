@@ -13,5 +13,7 @@
 
 FactoryBot.define do
   factory :cart do
+    total { Faker::Number.decimal(4, 2) }
+    association :user, factory: :user_confirmed
   end
 end

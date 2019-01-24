@@ -16,5 +16,9 @@
 
 FactoryBot.define do
   factory :cart_item do
+    quantity { Faker::Number.number(1) }
+    cart
+    item
+    size
   end
 end
