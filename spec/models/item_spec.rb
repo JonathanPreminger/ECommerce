@@ -63,7 +63,7 @@ RSpec.describe Item, type: :model do
     it { is_expected.to validate_presence_of(:brand) }
   end
 
-  context 'when destroying and item' do
+  context 'when destroying an item' do
     let(:item) { create(:item) }
 
     it 'destroys its stocks upon deletion' do
