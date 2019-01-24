@@ -35,6 +35,8 @@ RSpec.describe Item, type: :model do
       it { is_expected.to have_db_column(:male).of_type(:boolean) }
       it { is_expected.to have_db_column(:female).of_type(:boolean) }
       it { is_expected.to have_db_column(:discount_percentage).of_type(:integer).with_options(default: 0) }
+      it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
+      it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
     end
   end
 
