@@ -5,7 +5,7 @@
 # Table name: carts
 #
 #  id         :bigint(8)        not null, primary key
-#  total      :decimal(, )
+#  total      :decimal(, )      default(0.0)
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -38,11 +38,11 @@ RSpec.describe Cart, type: :model do
   end
 
   context 'when destroying cart' do
-  	let(:cart) { create(:cart) }
+    let(:cart) { create(:cart) }
 
-  	it 'destroys its cartItems upon delection' do
-  	  create_list(:cart_item, 1, cart: cart)
-  	  expect { cart.destroy }.to change(CartItem, :count).from(cart.cart_items.count).to(0)
-  	end
+    it 'destroys its cartItems upon delection' do
+      create_list(:cart_item, 1, cart: cart)
+      expect { cart.destroy }.to change(CartItem, :count).from(cart.cart_items.count).to(0)
+    end
   end
 end
