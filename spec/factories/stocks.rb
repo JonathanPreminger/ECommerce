@@ -14,5 +14,8 @@
 
 FactoryBot.define do
   factory :stock do
+    quantity { Faker::Number.number(2) }
+    item
+    size
   end
 end
