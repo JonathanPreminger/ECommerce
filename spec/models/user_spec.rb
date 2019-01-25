@@ -39,10 +39,9 @@ RSpec.describe User, type: :model do
       it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
     end
 
-
     context 'when testing associations' do
       it { is_expected.to have_one(:cart) }
-      it { is_expected.to have_many(:orders).through(:cart) }
+      it { is_expected.to have_many(:orders) }
     end
   end
 end
