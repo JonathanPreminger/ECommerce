@@ -34,3 +34,5 @@ spec/examples.txt
 
 # Ignore coverage
 coverage
+
+.env
