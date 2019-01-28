@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class CartItemsController < ApplicationController
-  respond_to :js, :html
+  include CurrentCart
+  before_action :find_cart_items
+  respond_to :js
 
   def create
     if @current_cart.cart_items.include?(@chosen_cart_item)
@@ -10,24 +12,25 @@ class CartItemsController < ApplicationController
     else
       @cart_item = CartItem.create!(cart_id: @current_cart.id, item_id: @chosen_item.id, size_id: @chosen_size.id)
     end
+    flash[:notice] = "Article ajouté au panier"
   end
 
   def destroy
     @cart_item = @chosen_cart_item
     @cart_item.destroy
-    falsh[:notice] = "L'article a été supprimé du panier"
+    flash[:notice] = "Le panier est vide"
   end
 
   def add_quantity
-    @cart_item = @chosen_item
+    @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity += 1)
-    flash[:notice] = "+1 article dans votre panier"
+    format.js { flash[:notice] = "Article ajouté au panier" }
   end
 
   def reduce_quantity
-    @cart_item = @chosen_item
-    @cart_item.update!(quantity: @cart_item.quantity += 1) if @cart_item.quantity > 1
-    flash[:notice] = "-1 article dans vore panier"
+    @cart_item = @chosen_cart_item
+    @cart_item.update!(quantity: @cart_item.quantity -= 1) if @cart_item.quantity > 1
+    flash[:notice] = "Article supprimé du panier"
   end
 
   protected
@@ -37,8 +40,8 @@ class CartItemsController < ApplicationController
   end
 
   def find_cart_items
-    @chosen_item = Item.find(params[:item_id])
-    @chosen_size = Size.find(params[:size_id])
     @chosen_cart_item = CartItem.find(params[:id])
+    @chosen_item = @chosen_cart_item.item_id
+    @chosen_size = @chosen_cart_item.size_id
   end
 end

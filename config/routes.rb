@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   root 'home#index'
   post 'cart_item', to: "cart_item#create"
   delete 'cart_item.:id', to: "cart_item#destroy"
-  post 'cart_item/:id/add' => "cart_item#add_quantity", as: "cart_item_add"
-  post 'cart_item/:id/reduce' => "cart_item#reduce_quantity", as: "cart_item_reduce"
+  post 'cart_items/:id/add_quantity', to: "cart_items#add_quantity", as: "cart_items_add"
+  post 'cart_items/:id/reduce_quantity', to: "cart_items#reduce_quantity", as: "cart_items_reduce"
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 end
