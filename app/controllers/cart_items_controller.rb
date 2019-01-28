@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CartItemsController < ApplicationController
+  respond_to :js, :html
+
   def create
     if @current_cart.cart_items.include?(@chosen_cart_item)
       @cart_item = @chosen_cart_item
@@ -13,16 +15,19 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = @chosen_cart_item
     @cart_item.destroy
+    falsh[:notice] = "L'article a été supprimé du panier"
   end
 
   def add_quantity
     @cart_item = @chosen_item
     @cart_item.update!(quantity: @cart_item.quantity += 1)
+    flash[:notice] = "+1 article dans votre panier"
   end
 
   def reduce_quantity
     @cart_item = @chosen_item
     @cart_item.update!(quantity: @cart_item.quantity += 1) if @cart_item.quantity > 1
+    flash[:notice] = "-1 article dans vore panier"
   end
 
   protected
