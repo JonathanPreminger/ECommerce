@@ -41,6 +41,7 @@
                                         <th class="product-remove"></th>
                                     </tr>
                                 </thead>
+                                <%@current_cart.cart_items.each do |cart_item|%>
                                 <tbody>
                                     <tr class="cart-item">
                                         <td class="product-image">
@@ -49,7 +50,8 @@
                                             </a>
                                         </td>
                                         <td class="product-name">
-                                            Nike running shoes - Pink
+                                             <%=cart_item.item.name%>
+
                                         </td>
                                         <td class="product-size product-size d-none d-lg-table-cell">
                                             <span class="strong-600">39</span>
@@ -60,9 +62,7 @@
                                         <td class="product-quantity d-none d-md-table-cell">
                                             <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[1]" disabled="disabled">
-                                                    <i class="ion-minus"></i>
-                                                    </button>
+                                                  <%= link_to "-",cart_items_reduce_path(cart_item.id),remote: true, method: :post %> 
                                                 </span>
                                                 <input type="text" name="quantity[1]" class="form-control input-number" placeholder="3" value="1" min="1" max="10">
                                                 <span class="input-group-btn">
@@ -202,6 +202,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                                <%end%>
                             </table>
                         </div>
                     </div>
