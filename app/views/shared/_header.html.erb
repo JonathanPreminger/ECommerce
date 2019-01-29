@@ -221,7 +221,7 @@
                                     <ul class="navbar-nav ml-lg-auto">
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Whishlist
+
                                             </a>
                                         </li>
                                     </ul>
@@ -232,15 +232,67 @@
                                         <li class="nav-item nav-item-icon hidden-md-down" data-toggle="global-search">
                                             <a href="#" class="nav-link">
                                                 <span>
-                                                    <i class="fa fa-search"></i>
+
                                                 </span>
                                             </a>
                                         </li>
-                                        <!-- Login -->
+                                        <!-- Bonhomme -->
                                         <li class="nav-item nav-item-icon">
                                             <a href="#" class="nav-link hidden-md-down" data-toggle="dropdown">
                                                 <i class="fa fa-user"></i>
                                             </a>
+                                            <ul class="dropdown-menu dropdown-menu--right dropdown-form">
+                                                <li>
+                                                    <div class="dropdown-form-inner">
+                                                        <div class="row align-items-center b-xs-bottom">
+                                                            <div class="col-7">
+                                                                <h3 class="heading heading-5 strong-400 text-capitalize pb-2">Sign in</h3>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <a href="#" class="btn-close-dropdown" data-toggle="dropdown">&times;</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-4">
+                                                            <form class="form-default">
+                                                                <div class="form-group">
+                                                                    <input type="email" class="form-control form-control-lg" placeholder="Email">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="password" class="form-control form-control-lg" placeholder="Password">
+                                                                </div>
+                                                                <div class="form-group mb-0">
+                                                                    <div class=" row align-items-center">
+                                                                        <div class="col-6">
+                                                                            <div class="checkbox">
+                                                                                <input type="checkbox" id="chkRememberMe">
+                                                                                <label for="chkRememberMe" class="no-margin">Remember me</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 text-right">
+                                                                            <button type="submit" class="btn btn-base-1 btn-circle">Sign in</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="text-center py-3 b-xs-top">
+                                                    <a href="/users/sign_up">
+                                                        Create a new account
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- Login try 2-->
+                                        <li class="nav-item nav-item-icon">
+                                          <% if user_signed_in? %>
+                                            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                                          <% else %>
+                                            <a href="#" class="nav-link hidden-md-down" data-toggle="dropdown">
+                                                Sign in
+                                            </a>
+                                          <% end %>
                                             <ul class="dropdown-menu dropdown-menu--right dropdown-form">
                                                 <li>
                                                     <div class="dropdown-form-inner">
@@ -295,7 +347,7 @@
                                         <!-- Slidebar -->
                                         <li class="nav-item nav-item-icon hidden-md-down">
                                             <a href="#" class="nav-link btn-st-trigger" data-effect="st-effect-1">
-                                                <span><i class="fa fa-bars"></i></span>
+                                                <!--<span><i class="fa fa-bars"></i></span>-->
                                             </a>
                                         </li>
                                     </ul>
