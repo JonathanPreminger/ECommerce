@@ -36,18 +36,16 @@
                                         <th class="product-name">Product</th>
                                         <th class="product-size d-none d-lg-table-cell">Size</th>
                                         <th class="product-price d-none d-lg-table-cell">Price</th>
-                                        <th class="product-quanity d-none d-md-table-cell">Quantity</th>
+                                        <th class="product-quantity d-none d-md-table-cell">Quantity</th>
                                         <th class="product-total">Total</th>
                                         <th class="product-remove"></th>
                                     </tr>
                                 </thead>
                                 <%@current_cart.cart_items.each do |cart_item|%>
                                 <tbody>
-                                    <tr class="cart-item">
+                                    <tr class="cart-item" id="<%=cart_item.id%>">
                                         <td class="product-image">
-                                            <a href="#">
-                                                <img src=cart_item.item.image_url>
-                                            </a>
+                                             <%=image_tag cart_item.item.image_url, id: 'image_id'%>
                                         </td>
                                         <td class="product-name">
                                              <%=cart_item.item.name%>
@@ -66,7 +64,7 @@
                                                   <%= link_to "-",cart_items_reduce_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
                                                   </i> 
                                                 </span>
-                                                <div id="quantity-<%=cart_item.id%>">
+                                                <div id="quantity-<%=cart_item.id%>" class="product-quantity pt-2">
                                                 <%=cart_item.quantity%>
                                                 </div>
                                                 <span class="input-group-btn">
@@ -82,8 +80,10 @@
                                             </div>
                                         </td>
                                         <td class="product-remove">
-                                            <a href="#" class="text-right pl-4">
-                                                <i class="ion-trash-a"></i>
+                                            <a href="#" class="text-right pl-2">
+                                                <i class="ion-trash-a">
+                                                    <%= link_to "X",cart_items_destroy_path(cart_item.id),remote: true, method: :delete, class:"btn btn-number"%>
+                                                </i>
                                             </a>
                                         </td>
                                     </tr>

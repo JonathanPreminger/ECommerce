@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
   post 'cart_item', to: "cart_item#create"
-  delete 'cart_item.:id', to: "cart_item#destroy"
+  delete 'cart_items/:id', to: "cart_items#destroy", as: "cart_items_destroy"
   post 'cart_items/:id/add_quantity', to: "cart_items#add_quantity", as: "cart_items_add"
   post 'cart_items/:id/reduce_quantity', to: "cart_items#reduce_quantity", as: "cart_items_reduce"
   require 'sidekiq/web'
