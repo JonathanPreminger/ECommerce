@@ -34,13 +34,10 @@ RSpec.describe CartItem, type: :model do
 
   context 'when testing associations' do
     it { is_expected.to belong_to(:item) }
-    it { is_expected.to belong_to(:cart) }
     it { is_expected.to belong_to(:size) }
   end
 
   context 'when testing validations' do
-    it { is_expected.to validate_presence_of(:item).on(:create) }
-    it { is_expected.to validate_presence_of(:cart).on(:create) }
     it { is_expected.to validate_presence_of(:size).on(:create) }
   end
 end
