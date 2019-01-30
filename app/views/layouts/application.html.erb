@@ -10,9 +10,11 @@
   </head>
 
   <body>
-    <%= render "shared/header" %>   
+    <%= render "shared/header" %>
+    <div id="flash">
+    </div>
     <%= yield %>
-    <%= render "shared/footer" %> 
+    <%= render "shared/footer" %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
