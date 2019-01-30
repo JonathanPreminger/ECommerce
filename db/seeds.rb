@@ -18,7 +18,7 @@ Category.create(name: "Coats")
 Category.create(name: "Related products")
 
 20.times do
-	Brand.create(name: Faker::Superhero.power)
+  Brand.create(name: Faker::Superhero.power)
 end
 
 Size.create(value: "S")
@@ -27,9 +27,9 @@ Size.create(value: "L")
 Size.create(value: "XL")
 
 100.times do
-	Item.create(name: Faker::Commerce.product_name, image_url: Faker::LoremPixel.image("100x100", false, 'fashion'), 
-	description: Faker::Lorem.sentence, price: rand(50)+1, male: Faker::Boolean.boolean, female: Faker::Boolean.boolean, 
-	category_id: rand(Category.first.id..Category.last.id), brand_id: rand(20)+1)
+  Item.create(name: Faker::Commerce.product_name, image_url: Faker::LoremPixel.image("100x100", false, 'fashion'),
+              description: Faker::Lorem.sentence, price: rand(1..50), male: Faker::Boolean.boolean, female: Faker::Boolean.boolean,
+              category_id: rand(Category.first.id..Category.last.id), brand_id: rand(1..20))
 end
 
-Stock.create(quantity: rand(10)+1, item_id: rand(Item.first.id..Item.last.id), size_id: rand(Size.first.id..Size.last.id))
+Stock.create(quantity: rand(1..10), item_id: rand(Item.first.id..Item.last.id), size_id: rand(Size.first.id..Size.last.id))
