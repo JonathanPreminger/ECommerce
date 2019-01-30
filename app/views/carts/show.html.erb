@@ -66,7 +66,9 @@
                                                   <%= link_to "-",cart_items_reduce_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
                                                   </i> 
                                                 </span>
+                                                <div id="quantity-<%=cart_item.id%>">
                                                 <%=cart_item.quantity%>
+                                                </div>
                                                 <span class="input-group-btn">
                                                   <i class="ion-plus">
                                                     <%= link_to "+",cart_items_add_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
@@ -75,7 +77,9 @@
                                             </div>
                                         </td>
                                         <td class="product-total">
+                                          <div id="total-<%=cart_item.id%>">
                                             <span><%=number_to_currency(cart_item.subtotal, unit:'€')%></span>
+                                            </div>
                                         </td>
                                         <td class="product-remove">
                                             <a href="#" class="text-right pl-4">
