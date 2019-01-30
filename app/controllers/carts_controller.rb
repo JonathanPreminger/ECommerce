@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  include CurrentCart
-  include CartTotal
   def show
     @cart = @current_cart
   end
