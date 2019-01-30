@@ -14,6 +14,9 @@
 class Order < ApplicationRecord
   belongs_to :user
   validates :user, presence: true, on: :create
-  has_many :cart_items, dependent: :destroy
+  has_many :cart_items, as: :line_item, dependent: :destroy
   validates :total, presence: true, numericality: { greater_than: 0 }, on: :create
+
+  scope :to_be_treated, -> { where(status: false) }
+  scope :treated, -> { where(status: true) }
 end

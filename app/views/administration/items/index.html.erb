@@ -12,34 +12,56 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Initial price</th>
+              <th>Discount percentage</th>
+              <th>Final price</th>
+              <th>Genre</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>System Architect</td>
-              <td>Edinburgh</td>
-              <td>61</td>
-              <td>2011/04/25</td>
-              <td>$320,800</td>
-            </tr>
+            <% @items.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= product.image_url %></td>
+                <td><%= product.description %></td>
+                <td><%= product.price %></td>
+                <td><%= product.discount_percentage %></td>
+                <td>product.price</td>
+                <td><%= product.genre %></td>
+                <td><%= product.category.name %></td>
+                <td><%= product.brand.name %></td>
+                <td class="table-action">
+                  <%= link_to edit_administration_item_path(product.id) do %>
+                    <i class="align-middle" data-feather="edit-2"></i>
+                  <% end %>
+                  <%= link_to administration_item_path(product.id), method: :delete, data: {confirm: "Are you sure?"} do %>
+                    <i class="align-middle" data-feather="trash"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
           <tfoot>
             <tr>
               <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Initial price</th>
+              <th>Discount percentage</th>
+              <th>Final price</th>
+              <th>Genre</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Actions</th>
             </tr>
           </tfoot>
         </table>
       </div>
     </div>
   </div>
+</div>
