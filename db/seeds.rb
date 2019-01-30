@@ -7,3 +7,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Category.create(name: "Shirt")
+Category.create(name: "Tee shirt")
+Category.create(name: "Pull")
+Category.create(name: "Trousers")
+Category.create(name: "Coats")
+Category.create(name: "Related products")
+
+20.times do
+	Brand.create(name: Faker::Superhero.power)
+end
+
+Size.create(value: "S")
+Size.create(value: "M")
+Size.create(value: "L")
+Size.create(value: "XL")
+
+100.times do
+	Item.create(name: Faker::Commerce.product_name, image_url: Faker::LoremPixel.image("100x100", false, 'fashion'), 
+	description: Faker::Lorem.sentence, price: rand(50)+1, male: Faker::Boolean.boolean, female: Faker::Boolean.boolean, 
+	category_id: rand(Category.first.id..Category.last.id), brand_id: rand(20)+1)
+end
+
+Stock.create(quantity: rand(10)+1, item_id: rand(Item.first.id..Item.last.id), size_id: rand(Size.first.id..Size.last.id))
