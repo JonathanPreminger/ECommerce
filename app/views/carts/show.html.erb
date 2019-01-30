@@ -36,172 +36,59 @@
                                         <th class="product-name">Product</th>
                                         <th class="product-size d-none d-lg-table-cell">Size</th>
                                         <th class="product-price d-none d-lg-table-cell">Price</th>
-                                        <th class="product-quanity d-none d-md-table-cell">Quantity</th>
+                                        <th class="product-quantity d-none d-md-table-cell">Quantity</th>
                                         <th class="product-total">Total</th>
                                         <th class="product-remove"></th>
                                     </tr>
                                 </thead>
+                                <%@current_cart.cart_items.each do |cart_item|%>
                                 <tbody>
-                                    <tr class="cart-item">
+                                    <tr class="cart-item" id="<%=cart_item.id%>">
                                         <td class="product-image">
-                                            <a href="#">
-                                                <img src="../../assets/images/prv/shop/sportswear/img-1a.png">
-                                            </a>
+                                             <%=image_tag cart_item.item.image_url, id: 'image_id'%>
                                         </td>
                                         <td class="product-name">
-                                            Nike running shoes - Pink
+                                             <%=cart_item.item.name%>
+
                                         </td>
                                         <td class="product-size product-size d-none d-lg-table-cell">
-                                            <span class="strong-600">39</span>
+                                            <span class="strong-600"><%=cart_item.size.value%></span>
                                         </td>
                                         <td class="product-price d-none d-lg-table-cell">
-                                            $120 USD
+                                            <%=number_to_currency(cart_item.item.price, unit:'€')%>
                                         </td>
                                         <td class="product-quantity d-none d-md-table-cell">
-                                            <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
+                                           <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[1]" disabled="disabled">
-                                                    <i class="ion-minus"></i>
-                                                    </button>
+                                                  <i class="ion-minus">
+                                                  <%= link_to "-",cart_items_reduce_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
+                                                  </i> 
                                                 </span>
-                                                <input type="text" name="quantity[1]" class="form-control input-number" placeholder="3" value="1" min="1" max="10">
+                                                <div id="quantity-<%=cart_item.id%>" class="product-quantity pt-2">
+                                                <%=cart_item.quantity%>
+                                                </div>
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[1]">
-                                                    <i class="ion-plus"></i>
-                                                    </button>
+                                                  <i class="ion-plus">
+                                                    <%= link_to "+",cart_items_add_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
+                                                  </i> 
                                                 </span>
                                             </div>
                                         </td>
                                         <td class="product-total">
-                                            <span>$120.00 USD</span>
-                                        </td>
-                                        <td class="product-remove">
-                                            <a href="#" class="text-right pl-4">
-                                                <i class="ion-trash-a"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <!-- Cart item -->
-                                    <tr class="cart-item">
-                                        <td class="product-image">
-                                            <a href="#">
-                                                <img src="../../assets/images/prv/shop/sportswear/img-2a.png">
-                                            </a>
-                                        </td>
-                                        <td class="product-name">
-                                            Man short sleeve shirt - Pink
-                                        </td>
-                                        <td class="product-size product-size d-none d-lg-table-cell">
-                                            <span class="strong-600">M</span>
-                                        </td>
-                                        <td class="product-price d-none d-lg-table-cell">
-                                            $45 USD
-                                        </td>
-                                        <td class="product-quantity d-none d-md-table-cell">
-                                            <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[2]">
-                                                    <i class="ion-minus"></i>
-                                                    </button>
-                                                </span>
-                                                <input type="text" name="quantity[2]" class="form-control input-number" placeholder="3" value="2" min="1" max="10">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[2]">
-                                                    <i class="ion-plus"></i>
-                                                    </button>
-                                                </span>
+                                          <div id="total-<%=cart_item.id%>">
+                                            <span><%=number_to_currency(cart_item.subtotal, unit:'€')%></span>
                                             </div>
                                         </td>
-                                        <td class="product-total">
-                                            <span>$90.00 USD</span>
-                                        </td>
                                         <td class="product-remove">
-                                            <a href="#" class="text-right pl-4">
-                                                <i class="ion-trash-a"></i>
+                                            <a href="#" class="text-right pl-2">
+                                                <i class="ion-trash-a">
+                                                    <%= link_to "X",cart_items_destroy_path(cart_item.id),remote: true, method: :delete, class:"btn btn-number"%>
+                                                </i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <!-- Cart item -->
-                                    <tr class="cart-item">
-                                        <td class="product-image">
-                                            <a href="#">
-                                                <img src="../../assets/images/prv/shop/sportswear/img-3a.png">
-                                            </a>
-                                        </td>
-                                        <td class="product-name">
-                                            Man running shoes- Black
-                                        </td>
-                                        <td class="product-size product-size d-none d-lg-table-cell">
-                                            <span class="strong-600">42</span>
-                                        </td>
-                                        <td class="product-price d-none d-lg-table-cell">
-                                            $160 USD
-                                        </td>
-                                        <td class="product-quantity d-none d-md-table-cell">
-                                            <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[3]" disabled="disabled">
-                                                    <i class="ion-minus"></i>
-                                                    </button>
-                                                </span>
-                                                <input type="text" name="quantity[3]" class="form-control input-number" placeholder="3" value="1" min="1" max="10">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[3]">
-                                                    <i class="ion-plus"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td class="product-total">
-                                            <span>$160.00 USD</span>
-                                        </td>
-                                        <td class="product-remove">
-                                            <a href="#" class="text-right pl-4">
-                                                <i class="ion-trash-a"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <!-- Cart item -->
-                                    <tr class="cart-item">
-                                        <td class="product-image">
-                                            <a href="#">
-                                                <img src="../../assets/images/prv/shop/sportswear/img-4a.png">
-                                            </a>
-                                        </td>
-                                        <td class="product-name">
-                                            Ocean blue fitness shirt
-                                        </td>
-                                        <td class="product-size product-size d-none d-lg-table-cell">
-                                            <span class="strong-600">XL</span>
-                                        </td>
-                                        <td class="product-price d-none d-lg-table-cell">
-                                            $30 USD
-                                        </td>
-                                        <td class="product-quantity d-none d-md-table-cell">
-                                            <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[4]">
-                                                    <i class="ion-minus"></i>
-                                                    </button>
-                                                </span>
-                                                <input type="text" name="quantity[4]" class="form-control input-number" placeholder="3" value="4" min="1" max="10">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[4]">
-                                                    <i class="ion-plus"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td class="product-total">
-                                            <span>$120.00 USD</span>
-                                        </td>
-                                        <td class="product-remove">
-                                            <a href="#" class="text-right pl-4">
-                                                <i class="ion-trash-a"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                  </tbody>
+                                <%end%>
                             </table>
                         </div>
                     </div>
