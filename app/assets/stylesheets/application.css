@@ -18,7 +18,6 @@
  *= require jquery.fancybox.min
  *= require swiper.min
  *= require_self
- *= require_tree .
  */
 
  #image_id{
