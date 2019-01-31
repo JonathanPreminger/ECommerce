@@ -17,7 +17,6 @@
                         <span class="dc-quantity">x<%=cart_item.quantity%></span>
                         <span class="dc-price"><%=number_to_currency(cart_item.item.price, unit:'€')%></span>
                     </div>
-                      <%= button_to "X",popup_carts_destroy_path(cart_item.id), remote: true, method: :delete%>
                 </div>
             </div>
             <%end%>
