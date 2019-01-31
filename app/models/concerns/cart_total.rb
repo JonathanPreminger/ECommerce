@@ -3,7 +3,7 @@
 module CartTotal
   extend ActiveSupport::Concern
   included do
-    def total
+    def tot
       cart_items.all.collect(&:subtotal).reduce(:+)
     end
   end
