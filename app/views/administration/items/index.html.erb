@@ -1,0 +1,67 @@
+<h1 class="h3 mb-3">DataTables</h1>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Default</h5>
+        <h6 class="card-subtitle text-muted">Highly flexible tool that many advanced features to any HTML table.</h6>
+      </div>
+      <div class="card-body">
+        <table id="datatables-basic" class="table table-striped" style="width:100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Initial price</th>
+              <th>Discount percentage</th>
+              <th>Final price</th>
+              <th>Genre</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= product.image_url %></td>
+                <td><%= product.description %></td>
+                <td><%= product.price %></td>
+                <td><%= product.discount_percentage %></td>
+                <td>product.price</td>
+                <td><%= product.genre %></td>
+                <td><%= product.category.name %></td>
+                <td><%= product.brand.name %></td>
+                <td class="table-action">
+                  <%= link_to edit_administration_item_path(product.id) do %>
+                    <i class="align-middle" data-feather="edit-2"></i>
+                  <% end %>
+                  <%= link_to administration_item_path(product.id), method: :delete, data: {confirm: "Are you sure?"} do %>
+                    <i class="align-middle" data-feather="trash"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Initial price</th>
+              <th>Discount percentage</th>
+              <th>Final price</th>
+              <th>Genre</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
