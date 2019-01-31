@@ -7,5 +7,7 @@ class ItemsController < ApplicationController
     @brands = Brand.all
   end
 
-  def show; end
+  def show
+    @item = Item.find
+  end
 end
