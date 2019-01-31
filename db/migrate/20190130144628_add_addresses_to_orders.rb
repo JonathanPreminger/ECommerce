@@ -3,8 +3,8 @@
 class AddAddressesToOrders < ActiveRecord::Migration[5.2]
   def change
     change_table :orders, bulk: true do |t|
-      t.integer :billing_id
-      t.integer :delivery_id
+      t.text :billing_address
+      t.text :delivery_address
     end
   end
 end
