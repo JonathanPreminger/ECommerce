@@ -2,7 +2,7 @@
 
 class CartItemsController < ApplicationController
   include CurrentCart
-  before_action :find_cart_items
+  before_action :find_cart_items, only: %i[add_quantity destroy reduce_quantity]
   respond_to :js
 
   def create
