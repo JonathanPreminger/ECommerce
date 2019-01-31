@@ -25,5 +25,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one :cart, dependent: :destroy
-  has_many :orders, through: :cart
+  has_many :orders, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  has_many :addresses, through: :profile
 end
