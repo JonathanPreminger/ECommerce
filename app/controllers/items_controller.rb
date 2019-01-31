@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find
+    @item = Item.find(params[:id])
+    @sizes = Size.all
   end
 end

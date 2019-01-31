@@ -23,3 +23,7 @@
  #image_id{
  		height: 100px;
  }
+
+.bg-minimalist {
+  background-color: #fff !important;
+}
