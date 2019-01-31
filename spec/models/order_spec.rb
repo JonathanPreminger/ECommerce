@@ -33,9 +33,4 @@ RSpec.describe Order, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:cart_items) }
   end
-
-  context 'when testing validations' do
-    it { is_expected.to validate_presence_of(:user).on(:create) }
-    it { is_expected.to validate_numericality_of(:total).is_greater_than(0) }
-  end
 end
