@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_112627) do
+ActiveRecord::Schema.define(version: 2019_01_30_144628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,15 +39,14 @@ ActiveRecord::Schema.define(version: 2019_01_23_112627) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "quantity", default: 1
-    t.bigint "cart_id"
     t.bigint "item_id"
     t.bigint "size_id"
-    t.bigint "order_id"
+    t.string "line_item_type"
+    t.bigint "line_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
-    t.index ["order_id"], name: "index_cart_items_on_order_id"
+    t.index ["line_item_type", "line_item_id"], name: "index_cart_items_on_line_item_type_and_line_item_id"
     t.index ["size_id"], name: "index_cart_items_on_size_id"
   end
 
@@ -87,7 +86,19 @@ ActiveRecord::Schema.define(version: 2019_01_23_112627) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false
+    t.text "billing_address"
+    t.text "delivery_address"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -122,4 +133,5 @@ ActiveRecord::Schema.define(version: 2019_01_23_112627) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "profiles", "users"
 end
