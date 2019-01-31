@@ -8,6 +8,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'faker'
+
+Category.create(name: "Shirt")
+Category.create(name: "Tee shirt")
+Category.create(name: "Pull")
+Category.create(name: "Trousers")
+Category.create(name: "Coats")
+Category.create(name: "Related products")
+
+10.times do
+  Brand.create!(name: Faker::Name.first_name)
+end
+
+Size.create(value: "S")
+Size.create(value: "M")
+Size.create(value: "L")
+Size.create(value: "XL")
+
+100.times do
+  Item.create!(name: Faker::Lorem.characters(6), image_url: Faker::LoremPixel.image("100x100", false, 'fashion'),
+               description: Faker::Lorem.sentence, price: rand(20..300), male: Faker::Boolean.boolean, female: Faker::Boolean.boolean,
+               category_id: rand(Category.first.id..Category.last.id), brand_id: rand(1..Brand.count))
+end
+
+i = 1
+while i <= Item.count
+  Stock.create!(quantity: rand(1..10), item_id: i, size_id: rand(Size.first.id..Size.last.id))
+  i += 1
+end
+
 Category.create(name: "kikou")
 Brand.create(name: "lol")
 Item.create(name: "maou", image_url: "http://is1.mzstatic.com/image/thumb/Purple49/v4/06/26/96/06269693-c065-caba-358c-deb859303797/source/256x256bb.jpg", price: 10, has_discount: true, male: true, discount_percentage: 50, category_id: 1, brand_id: 1, description: "youplaboum")

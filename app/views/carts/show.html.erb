@@ -1,0 +1,110 @@
+<section class="slice-xl page-title border-bottom has-bg-cover bg-size-cover" style="background-image: url(../../assets/images/prv/shop/section-img-1.jpg);">
+    <div class="container mask-container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="">
+                    <h3 class="heading heading-1 strong-600 text-capitalize mb-1">
+                    <span>Cart</span>
+                    </h3>
+                    <ol class="breadcrumb breadcrumb--style-2">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"<a href="#">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="#">Checkout</a></li>
+                    </ol>
+                </div>
+                <!-- Fluid text paragraph -->
+                <div class="pb-4 mt-4">
+                    <p class="lead">
+                        Parturient mus aenean a suspendisse est ligula eu dui a ultricies dictumst porttitor rhoncus a vestibulum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="slice sct-color-1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 mt--150">
+                <form class="form-default" data-toggle="validator" role="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table-cart">
+                                <thead>
+                                    <tr>
+                                        <th class="product-image"></th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-size d-none d-lg-table-cell">Size</th>
+                                        <th class="product-price d-none d-lg-table-cell">Price</th>
+                                        <th class="product-quantity d-none d-md-table-cell">Quantity</th>
+                                        <th class="product-total">Total</th>
+                                        <th class="product-remove"></th>
+                                    </tr>
+                                </thead>
+                                <%@current_cart.cart_items.each do |cart_item|%>
+                                <tbody>
+                                    <tr class="cart-item" id="<%=cart_item.id%>">
+                                        <td class="product-image">
+                                             <%=image_tag cart_item.item.image_url, id: 'image_id'%>
+                                        </td>
+                                        <td class="product-name">
+                                             <%=cart_item.item.name%>
+
+                                        </td>
+                                        <td class="product-size product-size d-none d-lg-table-cell">
+                                            <span class="strong-600"><%=cart_item.size.value%></span>
+                                        </td>
+                                        <td class="product-price d-none d-lg-table-cell">
+                                            <%=number_to_currency(cart_item.item.price, unit:'€')%>
+                                        </td>
+                                        <td class="product-quantity d-none d-md-table-cell">
+                                           <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
+                                                <span class="input-group-btn">
+                                                  <i class="ion-minus">
+                                                  <%= link_to "-",cart_items_reduce_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
+                                                  </i> 
+                                                </span>
+                                                <div id="quantity-<%=cart_item.id%>" class="product-quantity pt-2">
+                                                <%=cart_item.quantity%>
+                                                </div>
+                                                <span class="input-group-btn">
+                                                  <i class="ion-plus">
+                                                    <%= link_to "+",cart_items_add_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
+                                                  </i> 
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="product-total">
+                                          <div id="total-<%=cart_item.id%>">
+                                            <span><%=number_to_currency(cart_item.subtotal, unit:'€')%></span>
+                                            </div>
+                                        </td>
+                                        <td class="product-remove">
+                                            <a href="#" class="text-right pl-2">
+                                                <i class="ion-trash-a">
+                                                    <%= link_to "X",cart_items_destroy_path(cart_item.id), remote: true, method: :delete, class:"btn btn-number"%>
+                                                </i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                                <%end%>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row align-items-center pt-5">
+                        <div class="col-6">
+                            <a href="#" class="link link--style-3">
+                                <i class="ion-android-arrow-back"></i>
+                                Return to shop
+                            </a>
+                        </div>
+                        <div class="col-6 text-right">
+                            <button type="submit" class="btn btn-styled btn-base-1">Proceed to checkout</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
