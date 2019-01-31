@@ -4,15 +4,33 @@
 #
 # Table name: orders
 #
-#  id         :bigint(8)        not null, primary key
-#  total      :decimal(, )
-#  user_id    :bigint(8)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint(8)        not null, primary key
+#  total       :decimal(, )
+#  user_id     :bigint(8)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  status      :boolean          default(FALSE)
+#  billing_id  :integer
+#  delivery_id :integer
 #
 
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Model instantiation' do
+    subject(:new_Order) { described_class.new }
+
+    describe 'Database' do
+      it { is_expected.to have_db_column(:id).of_type(:integer) }
+      it { is_expected.to have_db_column(:total).of_type(:decimal) }
+      it { is_expected.to have_db_column(:user_id).of_type(:integer) }
+      it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
+      it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
+    end
+  end
+
+  context 'when testing associations' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:cart_items) }
+  end
 end

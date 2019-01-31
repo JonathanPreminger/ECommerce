@@ -79,7 +79,7 @@
                     <!-- Header -->
                     <div class="header">
                         <!-- Top Bar -->
-                        
+
                         <!-- Global Search -->
                         <section id="sctGlobalSearch" class="global-search global-search-overlay">
                             <div class="container">
@@ -102,9 +102,9 @@
                             <div class="container navbar-container">
                                 <!-- Brand/Logo -->
                                 <a class="navbar-brand" href="#">
-                                    <img src="#" class="" alt="Logo">
+                                    <h3>😈</h3>
                                 </a>
-                                
+
                                 <div class="d-inline-block">
                                     <!-- Navbar toggler  -->
                                     <button class="navbar-toggler hamburger hamburger-js hamburger--spring" type="button" data-toggle="collapse" data-target="#navbar_main" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,30 +145,6 @@
                                                             <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
                                                         </div>
                                                     </a>
-                                                    <a href="../../pages-profile.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Profile pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../../pages-blog.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Blog pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../../pages-shop.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Shop pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../../pages-real-estate.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Real estate pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -190,30 +166,6 @@
                                                             <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
                                                         </div>
                                                     </a>
-                                                    <a href="../../pages-profile.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Profile pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../../pages-blog.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Blog pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../../pages-shop.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Shop pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../../pages-real-estate.html" class="list-group-item list-group-item-action d-flex align-items-center">
-                                                        <div class="list-group-content">
-                                                            <div class="list-group-heading heading heading-6 mb-1">Real estate pages</div>
-                                                            <p class="text-sm mb-0">Lorem ipsum dolor sit amet consectetur adipiscing eiusmod tempor</p>
-                                                        </div>
-                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -221,7 +173,7 @@
                                     <ul class="navbar-nav ml-lg-auto">
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Whishlist
+
                                             </a>
                                         </li>
                                     </ul>
@@ -232,11 +184,11 @@
                                         <li class="nav-item nav-item-icon hidden-md-down" data-toggle="global-search">
                                             <a href="#" class="nav-link">
                                                 <span>
-                                                    <i class="fa fa-search"></i>
+
                                                 </span>
                                             </a>
                                         </li>
-                                        <!-- Login -->
+                                        <!-- Bonhomme -->
                                         <li class="nav-item nav-item-icon">
                                             <a href="#" class="nav-link hidden-md-down" data-toggle="dropdown">
                                                 <i class="fa fa-user"></i>
@@ -278,7 +230,59 @@
                                                     </div>
                                                 </li>
                                                 <li class="text-center py-3 b-xs-top">
-                                                    <a href="sign-up-1.html">
+                                                    <a href="/users/sign_up">
+                                                        Create a new account
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- Login try 2-->
+                                        <li class="nav-item nav-item-icon">
+                                          <% if user_signed_in? %>
+                                            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                                          <% else %>
+                                            <a href="#" class="nav-link hidden-md-down" data-toggle="dropdown">
+                                                Sign in
+                                            </a>
+                                          <% end %>
+                                            <ul class="dropdown-menu dropdown-menu--right dropdown-form">
+                                                <li>
+                                                    <div class="dropdown-form-inner">
+                                                        <div class="row align-items-center b-xs-bottom">
+                                                            <div class="col-7">
+                                                                <h3 class="heading heading-5 strong-400 text-capitalize pb-2">Sign in</h3>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <a href="#" class="btn-close-dropdown" data-toggle="dropdown">&times;</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-4">
+                                                            <form class="form-default">
+                                                                <div class="form-group">
+                                                                    <input type="email" class="form-control form-control-lg" placeholder="Email">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="password" class="form-control form-control-lg" placeholder="Password">
+                                                                </div>
+                                                                <div class="form-group mb-0">
+                                                                    <div class=" row align-items-center">
+                                                                        <div class="col-6">
+                                                                            <div class="checkbox">
+                                                                                <input type="checkbox" id="chkRememberMe">
+                                                                                <label for="chkRememberMe" class="no-margin">Remember me</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 text-right">
+                                                                            <button type="submit" class="btn btn-base-1 btn-circle">Sign in</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="text-center py-3 b-xs-top">
+                                                    <a href="/users/sign_up">
                                                         Create a new account
                                                     </a>
                                                 </li>
@@ -290,112 +294,12 @@
                                                 <i class="fa fa-shopping-bag"></i>
                                                 <sup class="badge bg-base-1">3</sup>
                                             </a>
-                                            <ul class="dropdown-menu dropdown-menu--right px-0">
-                                                <li>
-                                                    <div class="dropdown-cart px-0">
-                                                        <div class="dc-header">
-                                                            <h3 class="heading heading-6 strong-600">Cart</h3>
-                                                        </div>
-                                                        <div class="dc-item">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="dc-image">
-                                                                    <a href="#">
-                                                                        <img src="../../assets/images/prv/shop/accessories/img-1a.png" class="img-fluid" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="dc-content">
-                                                                    <span class="d-block dc-product-name text-capitalize strong-600 mb-1">
-                                                                        <a href="#">
-                                                                            Wood phone case
-                                                                        </a>
-                                                                    </span>
-                                                                    <span class="dc-quantity">x2</span>
-                                                                    <span class="dc-price">$50.00</span>
-                                                                </div>
-                                                                <div class="dc-actions">
-                                                                    <button>
-                                                                    <i class="ion-close"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="dc-item">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="dc-image">
-                                                                    <a href="#">
-                                                                        <img src="../../assets/images/prv/shop/accessories/img-2a.png" class="img-fluid" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="dc-content">
-                                                                    <span class="d-block dc-product-name text-capitalize strong-600 mb-1">
-                                                                        <a href="#">
-                                                                            Leather bag
-                                                                        </a>
-                                                                    </span>
-                                                                    <span class="dc-quantity">x1</span>
-                                                                    <span class="dc-price">$250.00</span>
-                                                                </div>
-                                                                <div class="dc-actions">
-                                                                    <button>
-                                                                    <i class="ion-close"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="dc-item">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="dc-image">
-                                                                    <a href="#">
-                                                                        <img src="../../assets/images/prv/shop/accessories/img-3a.png" class="img-fluid" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="dc-content">
-                                                                    <span class="d-block dc-product-name text-capitalize strong-600 mb-1">
-                                                                        <a href="#">
-                                                                            Brown leather wallet
-                                                                        </a>
-                                                                    </span>
-                                                                    <span class="dc-quantity">x1</span>
-                                                                    <span class="dc-price">$99.00</span>
-                                                                </div>
-                                                                <div class="dc-actions">
-                                                                    <button>
-                                                                    <i class="ion-close"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="dc-item py-4">
-                                                            <span class="subtotal-text">Subtotal</span>
-                                                            <span class="subtotal-amount">$450.00</span>
-                                                        </div>
-                                                        <div class="py-4 text-center">
-                                                            <ul class="inline-links inline-links--style-3">
-                                                                <li class="pr-3">
-                                                                    <a href="#" class="link link--style-2 text-capitalize">
-                                                                        <i class="ion-person"></i> My account
-                                                                    </a>
-                                                                </li>
-                                                                <li class="pr-3">
-                                                                    <a href="#" class="link link--style-1 text-capitalize">
-                                                                        <i class="ion-bag"></i> View cart
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" class="link link--style-1 text-capitalize">
-                                                                        <i class="ion-forward"></i> Checkout
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                        <%= render "shared/cart" %>
                                         </li>
                                         <!-- Slidebar -->
                                         <li class="nav-item nav-item-icon hidden-md-down">
                                             <a href="#" class="nav-link btn-st-trigger" data-effect="st-effect-1">
-                                                <span><i class="fa fa-bars"></i></span>
+                                                <!--<span><i class="fa fa-bars"></i></span>-->
                                             </a>
                                         </li>
                                     </ul>

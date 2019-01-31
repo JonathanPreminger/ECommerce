@@ -1,0 +1,121 @@
+<h1 class="h3 mb-3">Orders</h1>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Orders to be treated</h5>
+        <h6 class="card-subtitle text-muted">You should look at these</h6>
+      </div>
+      <div class="card-body">
+        <table id="datatables-basic" class="table table-striped" style="width:100%">
+          <thead>
+            <tr>
+              <th>Order n°</th>
+              <th>Recipient</th>
+              <th>Billing Address</th>
+              <th>Delivery Address</th>
+              <th>Number of items</th>
+              <th>Total</th>
+              <th>Created on</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders_to_be_treated.each do |element| %>
+              <tr>
+                <td><%= element.id %></td>
+                <td><%= element.user_name %></td>
+                <td><%= element.billing_address.readable %></td>
+                <td><%= element.delivery_address.readable %></td>
+                <td><%= element.number_of_items %></td>
+                <td>$ <%= element.total %></td>
+                <td><%= element.created_at.to_date %></td>
+                <td class="table-action">
+                  <%= link_to administration_order_path(element.id) do %>
+                    <i class="align-middle" data-feather="eye"></i>
+                  <% end %>
+                  <%= link_to administration_order_path(element.id), method: :put, data: {confirm: "Are you sure?"} do %>
+                    <i class="align-middle" data-feather="check"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Order n°</th>
+              <th>Recipient</th>
+              <th>Billing Address</th>
+              <th>Delivery Address</th>
+              <th>Number of items</th>
+              <th>Total</th>
+              <th>Created on</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Orders treated</h5>
+        <h6 class="card-subtitle text-muted">Great work !</h6>
+      </div>
+      <div class="card-body">
+        <table id="datatables-basic" class="table table-striped" style="width:100%">
+          <thead>
+            <tr>
+              <th>Order n°</th>
+              <th>Recipient</th>
+              <th>Billing Address</th>
+              <th>Delivery Address</th>
+              <th>Number of items</th>
+              <th>Total</th>
+              <th>Created on</th>
+              <th>Treated on</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders_treated.each do |element| %>
+              <tr>
+                <td><%= element.id %></td>
+                <td><%= element.user.profile.first_name %> <%= element.user.profile.last_name %></td>
+                <td><%= element.billing_address.readable %></td>
+                <td><%= element.delivery_address.readable %></td>
+                <td><%= element.number_of_items %></td>
+                <td>$ <%= element.total %></td>
+                <td><%= element.created_at.to_date %></td>
+                <td><%= element.updated_at.to_date %></td>
+                <td class="table-action">
+                  <%= link_to administration_order_path(element.id) do %>
+                    <i class="align-middle" data-feather="eye"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Order n°</th>
+              <th>Recipient</th>
+              <th>Billing Address</th>
+              <th>Delivery Address</th>
+              <th>Number of items</th>
+              <th>Total</th>
+              <th>Created on</th>
+              <th>Treated on</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

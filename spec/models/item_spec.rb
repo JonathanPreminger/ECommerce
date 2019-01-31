@@ -71,11 +71,6 @@ RSpec.describe Item, type: :model do
       expect { item.destroy }.to change(Stock, :count).from(item.stocks.count).to(0)
     end
 
-    it "destroys its cart_items upon deletion" do
-      create_list(:cart_item, 1, item: item)
-      expect { item.destroy }.to change(CartItem, :count).from(item.cart_items.count).to(0)
-    end
-
     it "doesn't destroy its size upon deletion" do
       create_list(:stock, 1, item: item)
       expect { item.destroy }.not_to change(Size, :count)
