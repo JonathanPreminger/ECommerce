@@ -3,14 +3,15 @@
 class CartItemsController < ApplicationController
   include CurrentCart
   before_action :find_cart_items, only: %i[add_quantity destroy reduce_quantity]
+  before_action :find_items, only: :create
   respond_to :js
 
   def create
-    if @current_cart.cart_items.include?(@chosen_cart_item)
-      @cart_item = @chosen_cart_item
+    if @current_cart.cart_items.include?(@chosen_item)
+      @cart_item = @current_cart.cart_items.find_by(item_id: @chosen_item.id)
       @cart_item.update!(quantity: @cart_item.quantity + 1)
     else
-      @cart_item = CartItem.create!(cart_id: @current_cart.id, item_id: @chosen_item.id, size_id: @chosen_size.id)
+      @cart_item = CartItem.create!(line_item_id: @current_cart.id, line_item_type: "Cart", item_id: @chosen_item.id, size_id: @chosen_size.id)
     end
     flash[:notice] = "Article ajouté au panier"
   end
@@ -36,12 +37,15 @@ class CartItemsController < ApplicationController
   protected
 
   def cart_item_params
-    params.require(:cart_item).permit(:quantity, :item_id, :cart_id, :size_id)
+    params.require(:cart_item).permit(:quantity, :item_id, :cart_id, :size_ids)
   end
 
   def find_cart_items
     @chosen_cart_item = CartItem.find(params[:id])
-    @chosen_item = @chosen_cart_item.item_id
-    @chosen_size = @chosen_cart_item.size_id
+  end
+
+  def find_items
+    @chosen_item = Item.find(params[:item_id])
+    @chosen_size = Size.find(params[:item][:size_ids])
   end
 end
