@@ -1,2 +1,3 @@
-$('#<%=@cart_item.id%>').closest('tr').remove();
+console.log("<%=@cart_item.id%>")
+$('tr#<%=@cart_item.id%>.cart-item').parent().remove();
 $("#flash").html('<%= j render partial: "shared/flash_messages" %>').show().delay(3000).fadeOut(600);
