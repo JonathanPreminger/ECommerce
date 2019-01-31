@@ -31,4 +31,10 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :sizes, through: :stocks
+
+  def genre
+    return "M" if male
+    return "W" if female
+    return "U" if male && female
+  end
 end
