@@ -1,0 +1,87 @@
+<div class="col-12 col-xl-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Modify an item</h5>
+    </div>
+    <div class="card-body">
+      <%= form_for [:administration, @item] do |f| %>
+        <form>
+          <div class="form-group row">
+            <label class="col-form-label col-sm-2 text-sm-right">Name</label>
+            <div class="col-sm-10">
+              <%= f.text_field :name, class: "form-control", placeholder:"Sock" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-form-label col-sm-2 text-sm-right">Image url</label>
+            <div class="col-sm-10">
+              <%= f.text_field :image_url, class:"form-control", placeholder:"https://some-url.com" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-form-label col-sm-2 text-sm-right">Description</label>
+            <div class="col-sm-10">
+              <%= f.text_area :description, class:"form-control", rows:"3", placeholder:"Blue" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-form-label col-sm-2 text-sm-right">Price</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <%= f.number_field :price, class:"form-control", placeholder:"50.0" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-form-label col-sm-2 text-sm-right">Discount percentage</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <%= f.number_field :discount_percentage, min: 0, max: 100, class:"form-control", placeholder:"50.0" %>
+                <div class="input-group-prepend">
+                  <span class="input-group-text">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <fieldset class="form-group">
+            <div class="row">
+              <label class="col-form-label col-sm-2 text-sm-right pt-sm-0">Genre</label>
+              <div class="col-sm-10">
+                <label class="custom-control custom-checkbox">
+                  <%= f.check_box :male, class: "custom-control-input", placeholder:"Sock" %>
+                <span class="custom-control-label">Men</span>
+                </label>
+                <label class="custom-control custom-checkbox">
+                  <%= f.check_box :female, class: "custom-control-input", placeholder:"Sock" %>
+                <span class="custom-control-label">Women</span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group row">
+            <label class="col-form-label col-sm-2 text-sm-right">Category</label>
+            <div class="col-sm-10">
+              <div class="mb-3">
+                <%= f.collection_select :category_id, Category.all, :id, :name, class:"form-control select2" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-form-label col-sm-2 text-sm-right">Brand</label>
+            <div class="col-sm-10">
+              <div class="mb-3">
+                <%= f.collection_select :brand_id, Brand.all, :id, :name, class:"form-control select2" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-10 ml-sm-auto">
+            <%= f.submit "Submit", class:"btn btn-primary" %>
+          </div>
+        </form>
+      <% end %>
+    </div>
+  </div>
+</div>

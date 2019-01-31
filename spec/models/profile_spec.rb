@@ -2,18 +2,18 @@
 
 # == Schema Information
 #
-# Table name: carts
+# Table name: profiles
 #
 #  id         :bigint(8)        not null, primary key
-#  total      :decimal(, )      default(0.0)
+#  first_name :string
+#  last_name  :string
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-FactoryBot.define do
-  factory :cart do
-    total { Faker::Number.decimal(4, 2) }
-    association :user, factory: :user_confirmed
-  end
+require 'rails_helper'
+
+RSpec.describe Profile, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

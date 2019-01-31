@@ -5,14 +5,14 @@
 # Table name: carts
 #
 #  id         :bigint(8)        not null, primary key
-#  total      :decimal(, )
+#  total      :decimal(, )      default(0.0)
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Cart < ApplicationRecord
-  has_many :cart_items, dependent: :destroy
+  has_many :cart_items, as: :line_item, dependent: :destroy
   has_many :items, through: :cart_items
   belongs_to :user
   validates :user, presence: true, on: :create

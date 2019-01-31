@@ -4,14 +4,14 @@
 #
 # Table name: cart_items
 #
-#  id         :bigint(8)        not null, primary key
-#  quantity   :integer          default(1)
-#  cart_id    :bigint(8)
-#  item_id    :bigint(8)
-#  size_id    :bigint(8)
-#  order_id   :bigint(8)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :bigint(8)        not null, primary key
+#  quantity       :integer          default(1)
+#  item_id        :bigint(8)
+#  size_id        :bigint(8)
+#  line_item_type :string
+#  line_item_id   :bigint(8)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 require 'rails_helper'
@@ -23,10 +23,8 @@ RSpec.describe CartItem, type: :model do
     describe 'Database' do
       it { is_expected.to have_db_column(:id).of_type(:integer) }
       it { is_expected.to have_db_column(:quantity).of_type(:integer) }
-      it { is_expected.to have_db_column(:cart_id).of_type(:integer) }
       it { is_expected.to have_db_column(:item_id).of_type(:integer) }
       it { is_expected.to have_db_column(:size_id).of_type(:integer) }
-      it { is_expected.to have_db_column(:order_id).of_type(:integer) }
       it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
     end
@@ -34,13 +32,10 @@ RSpec.describe CartItem, type: :model do
 
   context 'when testing associations' do
     it { is_expected.to belong_to(:item) }
-    it { is_expected.to belong_to(:cart) }
     it { is_expected.to belong_to(:size) }
   end
 
   context 'when testing validations' do
-    it { is_expected.to validate_presence_of(:item).on(:create) }
-    it { is_expected.to validate_presence_of(:cart).on(:create) }
     it { is_expected.to validate_presence_of(:size).on(:create) }
   end
 end
