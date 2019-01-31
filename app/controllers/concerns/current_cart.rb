@@ -9,6 +9,8 @@ module CurrentCart
   protected
 
   def check_cart
+    return unless current_user
+
     if session[:cart_id]
       @current_cart = Cart.find(session[:cart_id])
     else
