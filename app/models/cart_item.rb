@@ -15,7 +15,7 @@
 #
 
 class CartItem < ApplicationRecord
-  include CartTotal
+  include CartSubtotal
   belongs_to :item
   validates :item, presence: true, on: :create
   belongs_to :cart
