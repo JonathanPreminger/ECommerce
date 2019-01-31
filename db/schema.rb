@@ -101,7 +101,18 @@ ActiveRecord::Schema.define(version: 2019_01_30_144628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "status", default: false
+    t.integer "billing_id"
+    t.integer "delivery_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -136,4 +147,6 @@ ActiveRecord::Schema.define(version: 2019_01_30_144628) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "profiles"
+  add_foreign_key "profiles", "users"
 end
