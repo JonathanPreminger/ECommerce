@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PopupCartsController < ApplicationController
   before_action :find_cart_items
   respond_to :js
@@ -6,6 +8,7 @@ class PopupCartsController < ApplicationController
     @cart_item = @chosen_cart_item
     @cart_item.destroy
   end
+
   protected
 
   def cart_item_params
