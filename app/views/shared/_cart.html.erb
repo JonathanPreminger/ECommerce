@@ -5,12 +5,10 @@
                 <h3 class="heading heading-6 strong-600">Cart</h3>
             </div>
             <%@current_cart.cart_items.each do |cart_item|%>
-            <div class="dc-item">
+            <div class="dc-item", id="<%=cart_item.id%>">
                 <div class="d-flex align-items-center">
                     <div class="dc-image">
-                        <a href="#">
-                            <img src="#" class="img-fluid" alt="">
-                        </a>
+                      <%=image_tag cart_item.item.image_url, id: 'image_id'%>
                     </div>
                     <div class="dc-content">
                         <span class="d-block dc-product-name text-capitalize strong-600 mb-1">
@@ -19,17 +17,13 @@
                         <span class="dc-quantity">x<%=cart_item.quantity%></span>
                         <span class="dc-price"><%=number_to_currency(cart_item.item.price, unit:'€')%></span>
                     </div>
-                    <div class="dc-actions">
-                        <button>
-                        <i class="ion-close"></i>
-                        </button>
-                    </div>
+                      <%= button_to "X",popup_carts_destroy_path(cart_item.id), remote: true, method: :delete%>
                 </div>
             </div>
             <%end%>
             <div class="dc-item py-4">
-                <span class="subtotal-text">Subtotal</span>
-                <span class="subtotal-amount">$450.00</span>
+                <span class="subtotal-text">Total</span>
+                <span class="subtotal-amount"><%=number_to_currency(@current_cart.tot, unit:'€')%></span>
             </div>
             <div class="py-4 text-center">
                 <ul class="inline-links inline-links--style-3">

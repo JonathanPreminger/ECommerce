@@ -18,19 +18,19 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = @chosen_cart_item
     @cart_item.destroy
-    flash[:alert] = "Le panier a été vidé"
+    flash[:alert] = "Article retiré du panier"
   end
 
   def add_quantity
     @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity += 1)
-    flash[:notice] = "Article ajouté au panier"
+    flash[:notice] = "1 article ajouté au panier"
   end
 
   def reduce_quantity
     @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity -= 1) if @cart_item.quantity > 1
-    flash[:notice] = "Article supprimé du panier"
+    flash[:notice] = "1 article supprimé du panier"
   end
 
   protected
