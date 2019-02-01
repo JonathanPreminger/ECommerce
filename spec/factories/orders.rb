@@ -12,6 +12,8 @@
 #  status           :boolean          default(FALSE)
 #  billing_address  :text
 #  delivery_address :text
+#  first_name       :text
+#  last_name        :text
 #
 
 FactoryBot.define do
