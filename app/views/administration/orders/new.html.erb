@@ -1,0 +1,6 @@
+        <%= form_for @order, url: url_for(controller: 'orders', action: 'create') do |f| %>
+          <%= f.hidden_field :beer_id, :value => beer.id %>
+          <div class="actions mt-4 mb-3">
+            <%= f.submit "Ajouter", class:"btn btn-primary mb-2" %>
+          </div>
+        <% end %> 
