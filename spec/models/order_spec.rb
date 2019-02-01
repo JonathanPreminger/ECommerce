@@ -4,14 +4,14 @@
 #
 # Table name: orders
 #
-#  id          :bigint(8)        not null, primary key
-#  total       :decimal(, )
-#  user_id     :bigint(8)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  status      :boolean          default(FALSE)
-#  billing_id  :integer
-#  delivery_id :integer
+#  id               :bigint(8)        not null, primary key
+#  total            :decimal(, )
+#  user_id          :bigint(8)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  status           :boolean          default(FALSE)
+#  billing_address  :text
+#  delivery_address :text
 #
 
 require 'rails_helper'
@@ -24,6 +24,8 @@ RSpec.describe Order, type: :model do
       it { is_expected.to have_db_column(:id).of_type(:integer) }
       it { is_expected.to have_db_column(:total).of_type(:decimal) }
       it { is_expected.to have_db_column(:user_id).of_type(:integer) }
+      it { is_expected.to have_db_column(:billing_address).of_type(:text) }
+      it { is_expected.to have_db_column(:delivery_address).of_type(:text) }
       it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
     end
@@ -31,6 +33,10 @@ RSpec.describe Order, type: :model do
 
   context 'when testing associations' do
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to have_many(:cart_items) }
+  end
+
+  context 'when testing validations' do
+    it { is_expected.to validate_presence_of(:billing_address).on(:create) }
+    it { is_expected.to validate_presence_of(:delivery_address).on(:create) }
   end
 end
