@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module CartTotal
+module ItemCount
   extend ActiveSupport::Concern
   included do
-    def tot
-      cart_items.all.collect(&:subtotal).reduce(:+)
+    def all_items
+      cart_items.count
     end
   end
 end
