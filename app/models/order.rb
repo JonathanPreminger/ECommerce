@@ -41,4 +41,9 @@ class Order < ApplicationRecord
   def user_name
     "#{first_name} #{last_name}"
   end
+
+  def treatment
+    return "Treated" if status
+    return "Pending" if !status
+  end
 end
