@@ -62,7 +62,7 @@
                                                 <span class="input-group-btn">
                                                   <i class="ion-minus">
                                                   <%= link_to "-",cart_items_reduce_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
-                                                  </i> 
+                                                  </i>
                                                 </span>
                                                 <div id="quantity-<%=cart_item.id%>" class="product-quantity pt-2">
                                                 <%=cart_item.quantity%>
@@ -70,7 +70,7 @@
                                                 <span class="input-group-btn">
                                                   <i class="ion-plus">
                                                     <%= link_to "+",cart_items_add_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
-                                                  </i> 
+                                                  </i>
                                                 </span>
                                             </div>
                                         </td>
