@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="form-default">
-                               <%= form_for @item, url: cart_items_path(@item), method: :post do |f|%> 
+                               <%= form_for @item, url: cart_items_path(@item), method: :post, remote: true do |f|%> 
                                 <div class="row mt-2">
                                     <div class="col-md-6">
                                         <div class="form-group">
