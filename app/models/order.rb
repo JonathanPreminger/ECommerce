@@ -12,6 +12,8 @@
 #  status           :boolean          default(FALSE)
 #  billing_address  :text
 #  delivery_address :text
+#  first_name       :text
+#  last_name        :text
 #
 
 class Order < ApplicationRecord
@@ -39,6 +41,6 @@ class Order < ApplicationRecord
   end
 
   def user_name
-    "#{user.profile.first_name} #{user.profile.last_name}"
+    "#{first_name} #{last_name}"
   end
 end
