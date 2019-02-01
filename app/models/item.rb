@@ -38,4 +38,8 @@ class Item < ApplicationRecord
     return "W" if female
     return "U" if male && female
   end
+
+  def final_price
+    has_discount ? (price * (1 - discount_percentage.to_f / 100)).round(2) : price
+  end
 end

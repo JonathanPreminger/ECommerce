@@ -16,6 +16,7 @@
 
 class CartItem < ApplicationRecord
   include CartTotal
+  include CartSubtotal
 
   belongs_to :item
   belongs_to :line_item, polymorphic: true

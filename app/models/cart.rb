@@ -12,6 +12,8 @@
 #
 
 class Cart < ApplicationRecord
+  include CartTotal
+  include ItemCount
   has_many :cart_items, as: :line_item, dependent: :destroy
   has_many :items, through: :cart_items
   belongs_to :user

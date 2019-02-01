@@ -213,15 +213,17 @@
                                             </ul>
                                         </li>
                                         <!-- Cart -->
+                                        <% if user_signed_in? %>
                                         <li class="nav-item nav-item-icon dropdown">
                                             <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fa fa-shopping-bag"></i>
-                                                <sup class="badge bg-base-1">3</sup>
+                                                <sup class="badge bg-base-1"><%=@current_cart.all_items%></sup>
                                             </a>
-                                            <% if user_signed_in? %>
-                                            <%= render "shared/cart" %>
-                                            <% end %>
-                                        </li>                                
+
+                                        <%= render "shared/cart" %>
+
+                                        </li>
+                                        <%end%>
 
                                     </ul>
                                 </div>

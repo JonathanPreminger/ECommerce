@@ -16,7 +16,6 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-# x
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
