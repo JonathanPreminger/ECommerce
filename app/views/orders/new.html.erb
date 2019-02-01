@@ -59,19 +59,11 @@
                                         </td>
                                         <td class="product-quantity d-none d-md-table-cell">
                                            <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
-                                                <span class="input-group-btn">
-                                                  <i class="ion-minus">
-                                                  <%= link_to "-",cart_items_reduce_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
-                                                  </i> 
-                                                </span>
+                                                
                                                 <div id="quantity-<%=cart_item.id%>" class="product-quantity pt-2">
                                                 <%=cart_item.quantity%>
                                                 </div>
-                                                <span class="input-group-btn">
-                                                  <i class="ion-plus">
-                                                    <%= link_to "+",cart_items_add_path(cart_item.id),remote: true, method: :post, class:"btn btn-number"%>
-                                                  </i> 
-                                                </span>
+                                                
                                             </div>
                                         </td>
                                         <td class="product-total">
@@ -79,13 +71,7 @@
                                             <span><%=number_to_currency(cart_item.subtotal, unit:'€')%></span>
                                             </div>
                                         </td>
-                                        <td class="product-remove">
-                                            <a href="#" class="text-right pl-2">
-                                                <i class="ion-trash-a">
-                                                    <%= link_to "X",cart_items_destroy_path(cart_item.id), remote: true, method: :delete, class:"btn btn-number"%>
-                                                </i>
-                                            </a>
-                                        </td>
+                                        
                                     </tr>
                                   </tbody>
                                 <%end%>
@@ -100,7 +86,7 @@
                             </a>
                         </div>
                         <div class="col-6 text-right">
-                            <%= link_to "Proceed to checkout", new_users_orders_path, class: "btn btn-styled btn-base-1" %>
+                            <button type="submit" class="btn btn-styled btn-base-1">Proceed to checkout</button>
                         </div>
                     </div>
                 </form>
