@@ -1,0 +1,57 @@
+<section class="slice-xl page-title border-bottom has-bg-cover bg-size-cover" style="background-image: url(../../assets/images/prv/shop/section-img-1.jpg);">
+    <div class="container mask-container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="">
+                    <h3 class="heading heading-1 strong-600 text-capitalize mb-1">
+                    <span>Cart</span>
+                    </h3>
+                    <ol class="breadcrumb breadcrumb--style-2">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"<a href="#">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="#">Checkout</a></li>
+                    </ol>
+                </div>
+                <!-- Fluid text paragraph -->
+                <div class="pb-4 mt-4">
+                    <p class="lead">
+                        Parturient mus aenean a suspendisse est ligula eu dui a ultricies dictumst porttitor rhoncus a vestibulum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="slice sct-color-1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 mt--150">
+                <div class="card">
+                    <div class="card-body">
+                        <%= form_for @order, url: users_orders_path, method: :post do |f| %>
+                        <%= f.hidden_field :total, :value => @current_cart.tot %>
+                        <%= f.text_field :first_name, class: "form-control", placeholder:"John" %>
+                        <%= f.text_field :last_name, class: "form-control", placeholder:"Doe" %>
+                        <%= f.text_field :delivery_address, class: "form-control", placeholder:"50 rue ..." %>
+                        <%= f.text_field :billing_address, class: "form-control", placeholder:"25 rue ..." %>
+                        <div class="action">
+                        <%= f.submit %>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="row align-items-center pt-5">
+                    <div class="col-6">
+                        <a href="/" class="link link--style-3">
+                            <i class="ion-android-arrow-back"></i>
+                            Return to Cart
+                        </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <button type="submit" class="btn btn-styled btn-base-1">Proceed to checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

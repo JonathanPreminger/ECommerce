@@ -27,7 +27,7 @@ Size.create(value: "L")
 Size.create(value: "XL")
 
 100.times do
-  Item.create!(name: Faker::Lorem.characters(6), image_url: Faker::LoremPixel.image("100x100", false, 'fashion'),
+  Item.create!(name: Faker::Lorem.characters(6), image_url: Faker::LoremPixel.image("250x250", false, 'fashion'),
                description: Faker::Lorem.sentence, price: rand(20..300), male: Faker::Boolean.boolean, female: Faker::Boolean.boolean,
                category_id: rand(Category.first.id..Category.last.id), brand_id: rand(1..Brand.count))
 end
@@ -38,13 +38,6 @@ while i <= Item.count
   i += 1
 end
 
-Category.create(name: "kikou")
-Brand.create(name: "lol")
-Item.create(name: "maou", image_url: "http://is1.mzstatic.com/image/thumb/Purple49/v4/06/26/96/06269693-c065-caba-358c-deb859303797/source/256x256bb.jpg", price: 10, has_discount: true, male: true, discount_percentage: 50, category_id: 1, brand_id: 1, description: "youplaboum")
 user = User.new(email: "juliette.a@gmail.com", password: "123456", password_confirmation: "123456")
 user.skip_confirmation!
 user.save
-user.create_profile(first_name: "Juju", last_name: "Aud")
-Address.create(number: 5, road: "rue du bonheur", zip_code: 30_000, town: "Nîmes", state: "Gard", country: "France", profile_id: Profile.first.id,  billing: true)
-Address.create(number: 7, road: "rue du bonheur", zip_code: 30_000, town: "Nîmes", state: "Gard", country: "France", profile_id: Profile.first.id,  billing: false)
-Order.create(user_id: User.first.id, total: 10.0, billing_id: Address.first.id, delivery_id: Address.last.id, status: false)

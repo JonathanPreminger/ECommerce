@@ -3,8 +3,8 @@
 module CartTotal
   extend ActiveSupport::Concern
   included do
-    def subtotal
-      quantity * item.price
+    def tot
+      cart_items.all.collect(&:subtotal).reduce(:+)
     end
   end
 end

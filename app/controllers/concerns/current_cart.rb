@@ -9,7 +9,7 @@ module CurrentCart
   protected
 
   def check_cart
-    return unless current_user
+    return unless user_signed_in?
 
     if session[:cart_id]
       @current_cart = Cart.find(session[:cart_id])

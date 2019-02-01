@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
-  def index; end
+  def index
+    @items = Item.all
+    @categories = Category.all
+    @brands = Brand.all
+  end
 
-  def show; end
+  def show
+    @item = Item.find(params[:id])
+    @sizes = Size.all
+  end
 end

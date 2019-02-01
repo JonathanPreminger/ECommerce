@@ -16,9 +16,12 @@
 
 class CartItem < ApplicationRecord
   include CartTotal
+  include CartSubtotal
+
   belongs_to :item
-  validates :item, presence: true, on: :create
   belongs_to :line_item, polymorphic: true
   belongs_to :size
+
+  validates :item, presence: true, on: :create
   validates :size, presence: true, on: :create
 end

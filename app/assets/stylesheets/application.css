@@ -18,9 +18,20 @@
  *= require jquery.fancybox.min
  *= require swiper.min
  *= require_self
- *= require_tree .
  */
 
  #image_id{
  		height: 100px;
  }
+
+.bg-minimalist {
+  background-color: #fff !important;
+}
+
+.swiper-wrapper {
+  background-image: url(photo6.jpeg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
