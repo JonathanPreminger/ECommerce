@@ -14,6 +14,7 @@ module Administration
     def update
       @order = current_order
       if @order.update(status: true)
+        TreatedOrderMailer.order_treated(@order.user.email, @order).deliver_later
         redirect_to administration_orders_path, notice: 'Order updated to sent'
       else
         redirect_to administration_items_path, alert: "Order not updated to send"
