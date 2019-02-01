@@ -2,4 +2,5 @@
 
 class ApplicationController < ActionController::Base
   include CurrentCart
+  include ClearFlash
 end
