@@ -39,6 +39,6 @@ class Order < ApplicationRecord
   end
 
   def user_name
-    "#{user.profile.first_name} #{user.profile.last_name}"
+    "#{first_name} #{last_name}"
   end
 end
