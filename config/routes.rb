@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'items/index'
+  get 'items/index', to: "items#index", as: "items_index"
   get 'items/:id/show', to: "items#show", as: "items_show"
 
   get 'carts/show'
