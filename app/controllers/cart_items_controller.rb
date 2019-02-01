@@ -7,11 +7,11 @@ class CartItemsController < ApplicationController
   respond_to :js
 
   def create
-    if @current_cart.cart_items.include?(@chosen_item)
-      @cart_item = @current_cart.cart_items.find_by(item_id: @chosen_item.id)
-      @cart_item.update!(quantity: @cart_item.quantity + 1)
-    else
+    if @current_cart.cart_items.find_by(item_id: @chosen_item, size_id: @chosen_size).nil?
       @cart_item = CartItem.create!(line_item_id: @current_cart.id, line_item_type: "Cart", item_id: @chosen_item.id, size_id: @chosen_size.id)
+    else
+      @cart_item = @current_cart.cart_items.find_by(item_id: @chosen_item.id, size_id: @chosen_size)
+      @cart_item.update!(quantity: @cart_item.quantity + 1)
     end
     flash[:notice] = "Article ajouté au panier"
   end
