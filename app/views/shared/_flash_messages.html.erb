@@ -1,12 +1,10 @@
-<div  id= "flash">
+<div id="flash" class="container-fluid">
 <% if notice %>
-	<div class='alert alert-success p-2'>
+	<div class="alert alert-success p-2 container">
 		<%= notice %>
 	</div>
-<% end %>
-
-<% if alert %>
-	<div class='alert alert-danger p-2'>
+<% elsif alert %>
+	<div class="alert alert-danger p-2 container">
 		<%= alert %>
 	</div>
 <% end %>
