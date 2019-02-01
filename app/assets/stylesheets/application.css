@@ -27,3 +27,11 @@
 .bg-minimalist {
   background-color: #fff !important;
 }
+
+.swiper-wrapper {
+  background-image: url(photo6.jpeg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
