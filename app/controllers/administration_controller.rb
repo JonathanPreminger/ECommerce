@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+ # frozen_string_literal: true
 
 class AdministrationController < ApplicationController
   before_action :load_navbar_data

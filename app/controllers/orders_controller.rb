@@ -10,8 +10,22 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_order
   end
 
-  def create; end
+  def create
+  	@order = Order.new
+  	puts '%%%%%%%%%%%%'
+  	@order = current_user.orders.create(order_params)
+  end
+
+  private
+
+  def order_params
+  	params.require(:order).permit(:first_name, :last_name, :delivery_address, :billing_address, :total)
+  end
+
+  def current_order
+  	Order.find(params[:id])
+  end
 end

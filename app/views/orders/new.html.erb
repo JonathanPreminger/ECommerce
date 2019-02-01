@@ -29,60 +29,23 @@
                 <form class="form-default" data-toggle="validator" role="form">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table-cart">
-                                <thead>
-                                    <tr>
-                                        <th class="product-image"></th>
-                                        <th class="product-name">Product</th>
-                                        <th class="product-size d-none d-lg-table-cell">Size</th>
-                                        <th class="product-price d-none d-lg-table-cell">Price</th>
-                                        <th class="product-quantity d-none d-md-table-cell">Quantity</th>
-                                        <th class="product-total">Total</th>
-                                        <th class="product-remove"></th>
-                                    </tr>
-                                </thead>
-                                <%@current_cart.cart_items.each do |cart_item|%>
-                                <tbody>
-                                    <tr class="cart-item" id="<%=cart_item.id%>">
-                                        <td class="product-image">
-                                             <%=image_tag cart_item.item.image_url, id: 'image_id'%>
-                                        </td>
-                                        <td class="product-name">
-                                             <%=cart_item.item.name%>
-
-                                        </td>
-                                        <td class="product-size product-size d-none d-lg-table-cell">
-                                            <span class="strong-600"><%=cart_item.size.value%></span>
-                                        </td>
-                                        <td class="product-price d-none d-lg-table-cell">
-                                            <%=number_to_currency(cart_item.item.price, unit:'€')%>
-                                        </td>
-                                        <td class="product-quantity d-none d-md-table-cell">
-                                           <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
-                                                
-                                                <div id="quantity-<%=cart_item.id%>" class="product-quantity pt-2">
-                                                <%=cart_item.quantity%>
-                                                </div>
-                                                
-                                            </div>
-                                        </td>
-                                        <td class="product-total">
-                                          <div id="total-<%=cart_item.id%>">
-                                            <span><%=number_to_currency(cart_item.subtotal, unit:'€')%></span>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-                                  </tbody>
-                                <%end%>
-                            </table>
+                            <%= form_for @order, url: users_orders_path, method: :post do |f| %>
+                            <%= f.hidden_field :total, :value => @current_cart.tot %>
+                            <%= f.text_field :first_name, class: "form-control", placeholder:"John" %>
+                            <%= f.text_field :last_name, class: "form-control", placeholder:"Doe" %>
+                            <%= f.text_field :delivery_address, class: "form-control", placeholder:"50 rue ..." %>
+                            <%= f.text_field :billing_address, class: "form-control", placeholder:"25 rue ..." %>
+                            <div class="action">
+                            <%= f.submit %>
+                            </div>
+                            <% end %>
                         </div>
                     </div>
                     <div class="row align-items-center pt-5">
                         <div class="col-6">
                             <a href="/" class="link link--style-3">
                                 <i class="ion-android-arrow-back"></i>
-                                Return to shop
+                                Return to Cart
                             </a>
                         </div>
                         <div class="col-6 text-right">

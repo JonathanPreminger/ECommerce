@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   get 'items/:id/show', to: "items#show", as: "items_show"
 
   get 'carts/show'
-
   devise_for :users, controllers: { sessions: "users/sessions", registrations: 'users/registrations' }
   resource :users do
-    resource :orders, only: %i[new index show create]
+    resource :orders, only: %i[new create index show]
   end
 
   devise_for :admins, controllers: { sessions: 'admins/sessions', confirmations: 'admins/confirmations', registrations: 'admins/registrations', passwords: 'admins/passwords', unlocks: 'admins/unlocks' }
