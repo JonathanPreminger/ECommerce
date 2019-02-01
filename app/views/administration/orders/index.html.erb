@@ -26,8 +26,8 @@
               <tr>
                 <td><%= element.id %></td>
                 <td><%= element.user_name %></td>
-                <td><%= element.billing_address.readable %></td>
-                <td><%= element.delivery_address.readable %></td>
+                <td><%= element.billing_address %></td>
+                <td><%= element.delivery_address %></td>
                 <td><%= element.number_of_items %></td>
                 <td>$ <%= element.total %></td>
                 <td><%= element.created_at.to_date %></td>
@@ -86,9 +86,9 @@
             <% @orders_treated.each do |element| %>
               <tr>
                 <td><%= element.id %></td>
-                <td><%= element.user.profile.first_name %> <%= element.user.profile.last_name %></td>
-                <td><%= element.billing_address.readable %></td>
-                <td><%= element.delivery_address.readable %></td>
+                <td><%= element.user_name %></td>
+                <td><%= element.billing_address %></td>
+                <td><%= element.delivery_address %></td>
                 <td><%= element.number_of_items %></td>
                 <td>$ <%= element.total %></td>
                 <td><%= element.created_at.to_date %></td>
