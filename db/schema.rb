@@ -15,6 +15,20 @@ ActiveRecord::Schema.define(version: 2019_02_01_124501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer "number"
+    t.string "road"
+    t.integer "zip_code"
+    t.string "town"
+    t.string "state"
+    t.string "country"
+    t.bigint "profile_id"
+    t.boolean "billing", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_addresses_on_profile_id"
+  end
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -87,8 +101,8 @@ ActiveRecord::Schema.define(version: 2019_02_01_124501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "status", default: false
-    t.text "billing_address"
-    t.text "delivery_address"
+    t.integer "billing_id"
+    t.integer "delivery_id"
     t.text "first_name"
     t.text "last_name"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -125,5 +139,4 @@ ActiveRecord::Schema.define(version: 2019_02_01_124501) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end
