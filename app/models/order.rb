@@ -16,12 +16,12 @@
 
 class Order < ApplicationRecord
   belongs_to :user
-  validates :user, presence: true, on: :create
   has_many :cart_items, as: :line_item, dependent: :destroy
-  validates :total, presence: true, numericality: { greater_than: 0 }, on: :create
 
-  belongs_to :billing_address, class_name: "Address", foreign_key: "billing_id", inverse_of: :orders
-  belongs_to :delivery_address, class_name: "Address", foreign_key: "delivery_id", inverse_of: :orders
+  validates :billing_address, presence: true, on: :create
+  validates :delivery_address, presence: true, on: :create
+  validates :user, presence: true, on: :create
+  validates :total, presence: true, numericality: { greater_than: 0 }, on: :create
 
   scope :to_be_treated, -> { where(status: false) }
   scope :treated, -> { where(status: true) }

@@ -16,5 +16,10 @@
 
 FactoryBot.define do
   factory :order do
+    total { Faker::Number.between(1, 100) }
+    status { Faker::Boolean.boolean }
+    billing_address { Faker::Address.full_address }
+    delivery_address { Faker::Address.full_address }
+    association :user, factory: :user_confirmed
   end
 end
