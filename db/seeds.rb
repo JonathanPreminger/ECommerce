@@ -41,4 +41,3 @@ end
 user = User.new(email: "juliette.a@gmail.com", password: "123456", password_confirmation: "123456")
 user.skip_confirmation!
 user.save
-user.create_profile(first_name: "Juju", last_name: "Aud")
