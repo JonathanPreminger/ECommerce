@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  after_action :update_cart_items, only: [:create]
+
   def new
     @order = Order.new
   end
@@ -15,8 +17,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new
-    puts '%%%%%%%%%%%%'
     @order = current_user.orders.create(order_params)
+    redirect_to root_path, notice: "Order saved!"
   end
 
   private
@@ -27,5 +29,13 @@ class OrdersController < ApplicationController
 
   def current_order
     Order.find(params[:id])
+  end
+
+  def update_cart_items
+    @current_cart.cart_items.each do |item|
+      item.line_item_type = "Order"
+      item.line_item_id = current_user.orders.last.id
+      item.save
+    end
   end
 end
