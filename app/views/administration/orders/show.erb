@@ -34,7 +34,7 @@
           <tbody>
             <% @order.cart_items.each do |element| %>
               <tr>
-                <td><%= element.name %></td>
+                <td><%= element.item.name %></td>
                 <td><%= element.size %></td>
                 <td><%= element.quantity %></td>
               </tr>

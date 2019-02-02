@@ -20,18 +20,41 @@
  *= require_self
  */
 
+#welcome{
+		height: 70vh;
+		background-image: url("img-33.jpg");
+		background-position: top;
+		background-size: cover;
+		box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.66);
+}
+
+#men{
+		height: 250px;
+		background-image: url("photo4.jpeg");
+		background-size: cover;
+		background-position: bottom;
+		box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.66);
+		
+}
+
+#women{
+		height: 250px;
+		background-image: url("photo5.jpeg");
+		background-size: cover;
+		background-position: bottom;
+		box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.66);
+		
+}
+
+.mt-5{
+	margin-top: 90px !important;
+}
+
  #image_id{
  		height: 100px;
  }
 
 .bg-minimalist {
-  background-color: #fff !important;
+  	background-color: #fff !important;
 }
 
-.swiper-wrapper {
-  background-image: url(photo6.jpeg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
-}
