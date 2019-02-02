@@ -74,9 +74,6 @@
                                         <!-- Login try 2-->
                                             <% if user_signed_in? %>
                                         <li class="nav-item">
-                                             <%= link_to "Your orders", orders_index_path, class:"nav-link"%>
-                                        </li>
-                                        <li class="nav-item">
                                              <%= link_to "Edit account", edit_user_registration_path(current_user.id), class:"nav-link"%>
                                         </li>
                                         <li class="nav-item">
@@ -101,6 +98,7 @@
                                         <li class="nav-item nav-item-icon dropdown">
                                             <a class="nav-link" href="/carts/show">
                                                 <i class="fa fa-shopping-bag"></i>
+                                                <sup class="badge bg-base-1"><%=@current_cart.all_items%></sup>
                                             </a>
 
                                         <%= render "shared/cart" %>
