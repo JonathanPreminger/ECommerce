@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_order
   end
 
   def create
@@ -25,6 +25,10 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:first_name, :last_name, :delivery_address, :billing_address, :total)
+  end
+
+  def current_order
+    Order.find(params[:id])
   end
 
   def update_cart_items

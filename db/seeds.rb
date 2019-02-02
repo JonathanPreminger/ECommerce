@@ -41,6 +41,3 @@ end
 user = User.new(email: "juliette.a@gmail.com", password: "123456", password_confirmation: "123456")
 user.skip_confirmation!
 user.save
-admin = Admin.new(email: "juliette.b@gmail.com", password: "123456", password_confirmation: "123456")
-admin.skip_confirmation!
-admin.save
