@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your just ordered some clothes.</h1> 
+    <p>You should feel ashamed of yourself, but, yeah, you're not !</p>
+
+    <h5 class="card-title mb-0">Information on recipient</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: <%= @order.user_name %></li>
+      <li class="list-group-item">Billing Address: <%= @order.billing_address %></li>
+      <li class="list-group-item">Delivery Address: <%= @order.delivery_address %></li>
+      <li class="list-group-item">Created on: <%= @order.created_at %></li>
+    </ul>
+
+ <table style="width:100%">
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Size</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+        <% @order.cart_items.each do |element| %>
+          <tr>
+            <td><%= element.item.name %></td>
+            <td><%= element.item.final_price %>
+            <td><%= element.size.value %></td>
+            <td><%= element.quantity %></td>
+            <td class="product-total">
+              <div id="total-<%=element.id%>">
+                <span><%=number_to_currency(element.subtotal, unit:'$')%></span>
+                </div>
+            </td>
+        <% end %>
+          </tr>
+      </tbody>
+    </table>
+    
+    <p>Total: <%= number_to_currency(@order.total, unit:'$') %></p>
+  </body>
+</html>

@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.newest_first
   end
 
   def show
@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new
     @order = current_user.orders.create(order_params)
+    UserMailer.recap_order(@order.user.email, @order).deliver_later
     redirect_to users_order_path(@order), notice: "Order saved!"
   end
 

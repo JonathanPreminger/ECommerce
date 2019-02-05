@@ -1,9 +1,12 @@
 <div class="container mt-5 mb-5">
   <h1 class="h3 mb-3">Order n°<%= @order.id%></h1>
+  <div class="mb-3">
+    <h6>Status: <%= @order.treatment %>
+  </div>
 
   <%= render partial: "shared/recap_order", locals: {order: @order} %>
 
   <div class="mt-3 mb-3">
-    <%= button_to "Back to orders", users_orders_path, method: :get, class:"btn btn-primary" %>
+    <%= button_to "View my orders", users_orders_path, method: :get, class:"btn btn-primary" %>
   </div>
 </div>
