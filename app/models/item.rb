@@ -33,6 +33,8 @@ class Item < ApplicationRecord
   validates :category, presence: true, on: :create
   validates :brand, presence: true, on: :create
 
+  scope :alphabetical_order, -> { order(name: :asc) }
+
   def genre
     return "M" if male
     return "W" if female

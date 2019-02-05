@@ -2,8 +2,10 @@
 
 module Administration
   class ItemsController < AdministrationController
+    after_action :update_discount, only: %i[create update]
+
     def index
-      @items = Item.all
+      @items = Item.alphabetical_order
     end
 
     def new
@@ -45,6 +47,14 @@ module Administration
 
     def current_item
       Item.find(params[:id])
+    end
+
+    def update_discount
+      if @item.discount_percentage.positive?
+        @item.update(has_discount: true)
+      else
+        @item.update(has_discount: false)
+      end
     end
   end
 end

@@ -27,6 +27,9 @@ class Order < ApplicationRecord
 
   scope :to_be_treated, -> { where(status: false) }
   scope :treated, -> { where(status: true) }
+  scope :newest_first, -> { order(created_at: :desc) }
+  scope :latest_first, -> { order(created_at: :asc) }
+  scope :latest_treat, -> { order(updated_at: :desc) }
 
   def self.last_3_orders
     to_be_treated.order('created_at DESC').limit(3)
@@ -47,5 +50,9 @@ class Order < ApplicationRecord
   def treatment
     return "Treated" if status
     return "Pending" if !status
+  end
+
+  def treatment?
+    !status
   end
 end

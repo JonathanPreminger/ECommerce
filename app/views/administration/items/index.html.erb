@@ -1,11 +1,10 @@
-<h1 class="h3 mb-3">DataTables</h1>
+<h1 class="h3 mb-3">All the products</h1>
 
 <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title">Default</h5>
-        <h6 class="card-subtitle text-muted">Highly flexible tool that many advanced features to any HTML table.</h6>
+        <h5 class="card-title">They're like really organized there</h5>
       </div>
       <div class="card-body">
         <table id="datatables-basic" class="table table-striped" style="width:100%">
@@ -27,11 +26,11 @@
             <% @items.each do |product| %>
               <tr>
                 <td><%= product.name %></td>
-                <td><%= product.image_url %></td>
+                <td><img src="<%= product.image_url %>" alt="img shop">
                 <td><%= product.description %></td>
                 <td><%= product.price %></td>
                 <td><%= product.discount_percentage %></td>
-                <td>product.price</td>
+                <td><%= product.final_price %></td>
                 <td><%= product.genre %></td>
                 <td><%= product.category.name %></td>
                 <td><%= product.brand.name %></td>
