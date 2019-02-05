@@ -5,6 +5,7 @@ module Admins
     include Accessible
     skip_before_action :check_user, except: %i[new create]
     layout "administration", only: [:edit]
+    before_action :load_navbar_data, only: [:edit]
     # before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
 
@@ -19,9 +20,9 @@ module Admins
     end
 
     # GET /resource/edit
-    # def edit
-    #   super
-    # end
+    def edit
+      super
+    end
 
     # PUT /resource
     # def update
@@ -63,5 +64,10 @@ module Admins
     # def after_inactive_sign_up_path_for(resource)
     #   super(resource)
     # end
+
+    def load_navbar_data
+      @last_three = Order.last_3_orders
+      @orders_to_be_treated = Order.to_be_treated
+    end
   end
 end
