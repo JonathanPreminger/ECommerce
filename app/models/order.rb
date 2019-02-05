@@ -48,4 +48,8 @@ class Order < ApplicationRecord
     return "Treated" if status
     return "Pending" if !status
   end
+
+  def treatment?
+    !status
+  end
 end

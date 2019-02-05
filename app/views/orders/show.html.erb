@@ -1,69 +1,7 @@
 <div class="container mt-5 mb-5">
   <h1 class="h3 mb-3">Order n°<%= @order.id%></h1>
 
-  <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title mb-0">Information on recipient</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Name: <%= @order.user_name %></li>
-          <li class="list-group-item">Billing Address: <%= @order.billing_address %></li>
-          <li class="list-group-item">Delivery Address: <%= @order.delivery_address %></li>
-          <li class="list-group-item">Created on: <%= @order.created_at %></li>
-          <% if @order.status %>
-            <li class="list-group-item">Treated on: <%= @order.updated_at %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 mt-3">
-      <div class="card">
-        <div class="card-body">
-          <table id="datatables-basic" class="table table-striped" style="width:100%">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Size</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @order.cart_items.each do |element| %>
-                <tr>
-                  <td><%= element.item.name %></td>
-                  <td><%= element.item.final_price %>
-                  <td><%= element.size.value %></td>
-                  <td><%= element.quantity %></td>
-                  <td class="product-total">
-                    <div id="total-<%=element.id%>">
-                      <span><%=number_to_currency(element.subtotal, unit:'$')%></span>
-                      </div>
-                  </td>
-              <% end %>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Item</th>
-                <th>Size</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-              </tr>
-            </tfoot>
-          </table>
-          <div>
-            <p>Total: <%= number_to_currency(@order.total, unit:'$') %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render partial: "shared/recap_order", locals: {order: @order} %>
 
   <div class="mt-3 mb-3">
     <%= button_to "Back to orders", users_orders_path, method: :get, class:"btn btn-primary" %>
