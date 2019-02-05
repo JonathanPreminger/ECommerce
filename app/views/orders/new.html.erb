@@ -46,22 +46,19 @@
                           <%= f.label :Billing_address %>
                           <%= f.text_field :billing_address, class: "form-control", placeholder:"25 rue ..." %>
                         </div>
-                        <div class="action">
-                        <%= f.submit %>
+                        <div class="action mt-3" >
+                          <%= f.submit "Confirm addresses", class:"btn btn-primary mb-2" %>
                         </div>
                         <% end %>
                     </div>
                 </div>
                 <div class="row align-items-center pt-5">
-                    <div class="col-6">
-                        <a href="/" class="link link--style-3">
-                            <i class="ion-android-arrow-back"></i>
-                            Return to Cart
-                        </a>
-                    </div>
-                    <div class="col-6 text-right">
-                        <button type="submit" class="btn btn-styled btn-base-1">Proceed to checkout</button>
-                    </div>
+                  <div class="col-6">
+                      <a href="/" class="link link--style-3">
+                          <i class="ion-android-arrow-back"></i>
+                          Return to Cart
+                      </a>
+                  </div>
                 </div>
             </div>
         </div>
