@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new
     @order = current_user.orders.create(order_params)
-    redirect_to root_path, notice: "Order saved!"
+    redirect_to users_order_path(@order.id), notice: "Order saved!"
   end
 
   private

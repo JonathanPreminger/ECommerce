@@ -30,10 +30,22 @@
                     <div class="card-body">
                         <%= form_for @order, url: users_orders_path, method: :post do |f| %>
                         <%= f.hidden_field :total, :value => @current_cart.tot %>
-                        <%= f.text_field :first_name, class: "form-control", placeholder:"John" %>
-                        <%= f.text_field :last_name, class: "form-control", placeholder:"Doe" %>
-                        <%= f.text_field :delivery_address, class: "form-control", placeholder:"50 rue ..." %>
-                        <%= f.text_field :billing_address, class: "form-control", placeholder:"25 rue ..." %>
+                        <div class="field mt-3">
+                          <%= f.label :First_name %>
+                          <%= f.text_field :first_name, class: "form-control", placeholder:"John" %>
+                        </div>
+                        <div class="field mt-3">
+                          <%= f.label :Last_name %>
+                          <%= f.text_field :last_name, class: "form-control", placeholder:"Doe" %>
+                        </div>
+                        <div class="field mt-3">
+                          <%= f.label :Delivery_address %>
+                          <%= f.text_field :delivery_address, class: "form-control", placeholder:"50 rue ..." %>
+                        </div>
+                        <div class="field mt-3">
+                          <%= f.label :Billing_address %>
+                          <%= f.text_field :billing_address, class: "form-control", placeholder:"25 rue ..." %>
+                        </div>
                         <div class="action">
                         <%= f.submit %>
                         </div>
