@@ -28,6 +28,7 @@
             <thead>
               <tr>
                 <th>Product</th>
+                <th>Price</th>
                 <th>Size</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
@@ -37,6 +38,7 @@
               <% @order.cart_items.each do |element| %>
                 <tr>
                   <td><%= element.item.name %></td>
+                  <td><%= element.item.final_price %>
                   <td><%= element.size.value %></td>
                   <td><%= element.quantity %></td>
                   <td class="product-total">
@@ -51,11 +53,12 @@
                 <th>Item</th>
                 <th>Size</th>
                 <th>Quantity</th>
+                <th>Subtotal</th>
               </tr>
             </tfoot>
           </table>
           <div>
-            <p>Total: <%= number_to_currency(@current_cart.tot, unit:'$') %></p>
+            <p>Total: <%= number_to_currency(@order.total, unit:'$') %></p>
           </div>
         </div>
       </div>
