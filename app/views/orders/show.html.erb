@@ -30,6 +30,7 @@
                 <th>Product</th>
                 <th>Size</th>
                 <th>Quantity</th>
+                <th>Subtotal</th>
               </tr>
             </thead>
             <tbody>
@@ -38,7 +39,11 @@
                   <td><%= element.item.name %></td>
                   <td><%= element.size.value %></td>
                   <td><%= element.quantity %></td>
-                </tr>
+                  <td class="product-total">
+                    <div id="total-<%=element.id%>">
+                      <span><%=number_to_currency(element.subtotal, unit:'$')%></span>
+                      </div>
+                  </td>
               <% end %>
             </tbody>
             <tfoot>
@@ -49,6 +54,9 @@
               </tr>
             </tfoot>
           </table>
+          <div>
+            <p>Total: <%= number_to_currency(@current_cart.tot, unit:'$') %></p>
+          </div>
         </div>
       </div>
     </div>
