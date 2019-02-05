@@ -3,8 +3,8 @@
 module Administration
   class OrdersController < AdministrationController
     def index
-      @orders_treated = Order.all.treated
-      @orders_to_be_treated = Order.to_be_treated
+      @orders_to_be_treated = Order.to_be_treated.latest_first
+      @orders_treated = Order.all.treated.latest_treat
     end
 
     def show
@@ -14,7 +14,7 @@ module Administration
     def update
       @order = current_order
       if @order.update(status: true)
-        TreatedOrderMailer.order_treated(@order.user.email, @order).deliver_later
+        UserMailer.order_treated(@order.user.email, @order).deliver_later
         redirect_to administration_orders_path, notice: 'Order updated to sent'
       else
         redirect_to administration_items_path, alert: "Order not updated to send"

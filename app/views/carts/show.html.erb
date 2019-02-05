@@ -37,7 +37,7 @@
                                         <th class="product-size d-none d-lg-table-cell">Size</th>
                                         <th class="product-price d-none d-lg-table-cell">Price</th>
                                         <th class="product-quantity d-none d-md-table-cell">Quantity</th>
-                                        <th class="product-total">Total</th>
+                                        <th class="product-total">Subtotal</th>
                                         <th class="product-remove"></th>
                                     </tr>
                                 </thead>
@@ -55,7 +55,7 @@
                                             <span class="strong-600"><%=cart_item.size.value%></span>
                                         </td>
                                         <td class="product-price d-none d-lg-table-cell">
-                                            <%=number_to_currency(cart_item.item.price, unit:'€')%>
+                                            <%=number_to_currency(cart_item.item.final_price, unit:'€')%>
                                         </td>
                                         <td class="product-quantity d-none d-md-table-cell">
                                            <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
@@ -76,7 +76,7 @@
                                         </td>
                                         <td class="product-total">
                                           <div id="total-<%=cart_item.id%>">
-                                            <span><%=number_to_currency(cart_item.subtotal, unit:'€')%></span>
+                                            <span><%=number_to_currency(cart_item.subtotal, unit:'$')%></span>
                                             </div>
                                         </td>
                                         <td class="product-remove">
@@ -88,10 +88,13 @@
                                         </td>
                                     </tr>
                                   </tbody>
-                                <%end%>
+                                <%end%>          
                             </table>
                         </div>
                     </div>
+                    <div>
+                      <p>Total: <%= number_to_currency(@current_cart.tot, unit:'$') %></p>
+                    </div>      
                     <div class="row align-items-center pt-5">
                         <div class="col-6">
                             <a href="/" class="link link--style-3">
@@ -100,7 +103,7 @@
                             </a>
                         </div>
                         <div class="col-6 text-right">
-                            <%= link_to "Proceed to checkout", new_users_orders_path, class: "btn btn-styled btn-base-1" %>
+                            <%= link_to "Proceed to checkout", new_users_order_path, class: "btn btn-styled btn-base-1" %>
                         </div>
                     </div>
                 </form>
