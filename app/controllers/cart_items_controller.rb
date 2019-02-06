@@ -3,7 +3,7 @@
 class CartItemsController < ApplicationController
   include CurrentCart
   before_action :find_cart_items, only: %i[add_quantity destroy reduce_quantity]
-  before_action :find_items, only: :create
+  before_action :find_items, only: %i[create update]
   respond_to :js
 
   def create
@@ -22,16 +22,23 @@ class CartItemsController < ApplicationController
     flash[:alert] = "Article retiré du panier"
   end
 
+  def update; end
+
   def add_quantity
     @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity += 1)
-    flash[:notice] = "1 article ajouté au panier"
+    # get the item_id find_by the item_id and the size_id then reduce quantity in stock.
+    @the_stock = Stock.find_by(item_id: @chosen_item, size_id: @chosen_size)
+    @the_stock.update!(quantity: @the_stock.quantity -= 1)
   end
 
   def reduce_quantity
     @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity -= 1) if @cart_item.quantity > 1
     flash[:alert] = "1 article supprimé du panier"
+    # increase quantity in stock.
+    @the_stock = Stock.find_by(item_id: @chosen_item, size_id: @chosen_size)
+    @the_stock.update!(quantity: @the_stock.qunatity += 1)
   end
 
   protected
