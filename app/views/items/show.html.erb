@@ -17,8 +17,13 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="form-default">
-                               <%= form_for @item, url: cart_items_path(@item), method: :post, remote: true do |f|%> 
-                                <div class="row mt-2">
+                               <%= form_for @item, url: cart_items_path(@item), method: :post, remote: true do |f|%>
+                                        <div class="product-short-text">
+                                            <p>
+                                                <%= @item.description %>
+                                            </p>
+                                        </div>
+                                <div class="row mb-3 mt-2">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                           <%= f.collection_select :size_ids, Size.all, :id, :value, class:"form-control select2"%>
@@ -26,24 +31,21 @@
                                     </div>
                                 </div>
                                 <div class="row mt-2">
+                                <% if user_signed_in? %>
                                     <div class="col-12">
                                         <!-- Add to cart button -->
-                                        <% if user_signed_in? %>
                                         <%=f.submit 'Add to cart',class: "btn btn-lg btn-block btn-gray-dark btn-icon-left" %>
                                         <% end %>
                                     </div>
+                               <%end%>
                                 </div>
                             </div>
-                          <%end%>
                         </div>
                     </div>
+                    <% unless user_signed_in? %>
+                    <%= button_to "Connect to order", new_user_session_path, method: :get, class: "btn btn-lg btn-block btn-gray-dark btn-icon-left" %>
+                    <% end %>
                     <span class="space-xs-md"></span>
-                    <!-- Product description -->
-                    <div class="product-short-text">
-                        <p>
-                            <%= @item.description %>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
