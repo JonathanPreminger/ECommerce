@@ -34,7 +34,10 @@ end
 
 i = 1
 while i <= Item.count
-  Stock.create!(quantity: rand(1..10), item_id: i, size_id: rand(Size.first.id..Size.last.id))
+  Stock.create!(quantity: rand(1..10), item_id: i, size_id: 1)
+  Stock.create!(quantity: rand(1..10), item_id: i, size_id: 2)
+  Stock.create!(quantity: rand(1..10), item_id: i, size_id: 3)
+  Stock.create!(quantity: rand(1..10), item_id: i, size_id: 4)
   i += 1
 end
 
