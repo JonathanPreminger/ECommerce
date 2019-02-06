@@ -1,0 +1,13 @@
+<h1 class="h3 mb-3">Order n°<%= @order.id%></h1>
+
+<%= render partial: "shared/recap_order", locals: {order: @order} %>
+
+<% if @order.treatment? %>
+  <div class="mb-3">
+    <%= button_to "Order treated", administration_order_path(@order.id), method: :put, data: {confirm: "Are you sure?"}, class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+<div class="mb-3">
+  <%= button_to "Back to orders", administration_orders_path, method: :get, class:"btn btn-info" %>
+</div>
