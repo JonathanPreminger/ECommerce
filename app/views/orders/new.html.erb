@@ -4,7 +4,7 @@
             <div class="col-md-6">
                 <div class="">
                     <h3 class="heading heading-1 strong-600 text-capitalize mb-1">
-                    <span>Cart</span>
+                    <span>Information on recipient</span>
                     </h3>
                     <ol class="breadcrumb breadcrumb--style-2">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -15,7 +15,7 @@
                 <!-- Fluid text paragraph -->
                 <div class="pb-4 mt-4">
                     <p class="lead">
-                        Parturient mus aenean a suspendisse est ligula eu dui a ultricies dictumst porttitor rhoncus a vestibulum.
+                        Who will be spoiled ?
                     </p>
                 </div>
             </div>
@@ -47,8 +47,17 @@
                           <%= f.text_field :billing_address, class: "form-control", placeholder:"25 rue ..." %>
                         </div>
                         <div class="action mt-3" >
-                          <%= f.submit "Proceed to payment", class:"btn btn-primary mb-2" %>
+                          <article>
+                            <% if flash[:error].present? %>
+                              <div id="error_explanation">
+                                <p>
+                                  <%= flash[:error] %>
+                                </p>
+                              </div>
+                            <% end %>
+                          </article>
                         </div>
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Amount" data-amount="<%= @current_cart.tot * 100 %>" data-currency="usd" data-locale="auto"></script>
                         <% end %>
                     </div>
                 </div>

@@ -17,6 +17,7 @@
           <%= render partial: "layouts/administration/navbar", locals: {orders_to_be_treated: @orders_to_be_treated, last_three: @last_three} %>
           <main class="content">
             <div class="container-fluid p-0">
+              <%= render "layouts/shared/flash_messages" %>
               <%= yield %>
             </div>
           </main>
