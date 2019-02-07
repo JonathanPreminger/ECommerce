@@ -90,4 +90,35 @@ RSpec.describe Item, type: :model do
       expect(Item.where(name: "Jean's").size).to eq(0)
     end
   end
+
+  context 'when testing the genre' do
+    it 'returns m when male' do
+      item = build(:item_male)
+      expect(item.genre).to eq("M")
+    end
+
+    it 'returns w when male' do
+      item = build(:item_female)
+      expect(item.genre).to eq("W")
+    end
+
+    it 'returns u when unisex' do
+      item = build(:item_unisex)
+      expect(item.genre).to eq("U")
+    end
+  end
+
+  describe 'Final price' do
+    context 'when the item has a discount' do
+      let(:item) { build(:item_with_discount, price: 100.00, discount_percentage: 20) }
+
+      it { expect(item.final_price).to eq(80.00) }
+    end
+
+    context "when the item doesn't have a discount" do
+      let(:item) { build(:item_without_discount, price: 100.00) }
+
+      it { expect(item.final_price).to eq(100.00) }
+    end
+  end
 end
