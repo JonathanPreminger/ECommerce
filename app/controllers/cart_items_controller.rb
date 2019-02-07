@@ -2,18 +2,23 @@
 
 class CartItemsController < ApplicationController
   include CurrentCart
-  before_action :find_cart_items, only: %i[add_quantity destroy reduce_quantity]
+  before_action :find_cart_items, only: %i[add_quantity destroy reduce_quantity create]
   before_action :find_items, only: %i[create update]
   respond_to :js
 
   def create
-    if @current_cart.cart_items.find_by(item_id: @chosen_item, size_id: @chosen_size).nil?
+    stock = Stock.find_by(item_id: @chosen_cart_item.item.id, size_id: @chosen_cart_item.size.id)
+    if @current_cart.cart_items.find_by(item_id: @chosen_item, size_id: @chosen_size).nil? && stock.quantity.positive?
       @cart_item = CartItem.create!(line_item_id: @current_cart.id, line_item_type: "Cart", item_id: @chosen_item.id, size_id: @chosen_size.id)
-    else
+      flash[:notice] = "Article ajouté au panier "
+    elsif stock.quantity.positive?
       @cart_item = @current_cart.cart_items.find_by(item_id: @chosen_item.id, size_id: @chosen_size)
       @cart_item.update!(quantity: @cart_item.quantity + 1)
+      flash[:notice] = "Article ajouté au panier "
+    else
+      flash[:alert] = "cet article n'est plus disponible"
     end
-    flash[:notice] = "Article ajouté au panier "
+    puts stock.quantity
   end
 
   def destroy
@@ -25,20 +30,27 @@ class CartItemsController < ApplicationController
   def update; end
 
   def add_quantity
-    @cart_item = @chosen_cart_item
-    @cart_item.update!(quantity: @cart_item.quantity += 1)
-    # get the item_id find_by the item_id and the size_id then reduce quantity in stock.
-    @the_stock = Stock.find_by(item_id: @chosen_item, size_id: @chosen_size)
-    @the_stock.update!(quantity: @the_stock.quantity -= 1)
+    stock = Stock.find_by(item_id: @chosen_cart_item.item.id, size_id: @chosen_cart_item.size.id)
+    if stock.quantity.positive?
+      @cart_item = @chosen_cart_item
+      @cart_item.update!(quantity: @cart_item.quantity += 1)
+      flash[:notice] = "1 article ajouté au panier"
+      stock.update!(quantity: stock.quantity -= 1)
+    else
+      flash[:alert] = "cet article n'est plus disponible"
+    end
+    puts "________________________________________________________"
+    puts stock.quantity
   end
 
   def reduce_quantity
     @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity -= 1) if @cart_item.quantity > 1
-    flash[:alert] = "1 article supprimé du panier"
-    # increase quantity in stock.
-    @the_stock = Stock.find_by(item_id: @chosen_item, size_id: @chosen_size)
-    @the_stock.update!(quantity: @the_stock.qunatity += 1)
+    flash[:notice] = "1 article supprimé du panier"
+    stock = Stock.find_by(item_id: @chosen_cart_item.item.id, size_id: @chosen_cart_item.size.id)
+    stock.update!(quantity: stock.quantity += 1)
+    puts "________________________________________________________"
+    puts stock.quantity
   end
 
   protected
