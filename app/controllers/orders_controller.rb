@@ -16,10 +16,22 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
+    customer = Stripe::Customer.create(
+      email: params[:stripeEmail],
+      source: params[:stripeToken]
+    )
+    Stripe::Charge.create(
+      customer: customer.id,
+      amount: @current_cart.tot.to_i * 100,
+      description: "My money",
+      currency: 'usd'
+    )
     @order = current_user.orders.create(order_params)
     UserMailer.recap_order(@order.user.email, @order).deliver_later
     redirect_to users_order_path(@order), notice: "Order saved!"
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect to new_users_order_path
   end
 
   private
