@@ -63,10 +63,15 @@ FactoryBot.define do
       discount_percentage { Faker::Number.between(1, 100) }
     end
 
+    factory :item_male, traits: %i[male_clothe]
+    factory :item_female, traits: %i[female_clothe]
+    factory :item_unisex, traits: %i[unisex]
+
+    factory :item_with_discount, traits: %i[with_discount]
+    factory :item_without_discount, traits: %i[without_discount]
+
     factory :item_without_discount_male, traits: %i[without_discount male_clothe]
-
     factory :item_without_discount_female, traits: %i[without_discount female_clothe]
-
     factory :item_without_discount_unisex, traits: %i[without_discount unisex]
 
     factory :item_test do

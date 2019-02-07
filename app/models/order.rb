@@ -23,6 +23,8 @@ class Order < ApplicationRecord
   validates :billing_address, presence: true, on: :create
   validates :delivery_address, presence: true, on: :create
   validates :user, presence: true, on: :create
+  validates :first_name, presence: true, on: :create
+  validates :last_name, presence: true, on: :create
   validates :total, presence: true, numericality: { greater_than: 0 }, on: :create
 
   scope :to_be_treated, -> { where(status: false) }
