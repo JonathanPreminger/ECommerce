@@ -36,9 +36,9 @@ class Item < ApplicationRecord
   scope :alphabetical_order, -> { order(name: :asc) }
 
   def genre
+    return "U" if male && female
     return "M" if male
     return "W" if female
-    return "U" if male && female
   end
 
   def final_price
