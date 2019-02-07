@@ -13,7 +13,7 @@ class CartItemsController < ApplicationController
       @cart_item = @current_cart.cart_items.find_by(item_id: @chosen_item.id, size_id: @chosen_size)
       @cart_item.update!(quantity: @cart_item.quantity + 1)
     end
-    flash[:notice] = "Article ajouté au panier "
+    flash[:notice] = "Article ajouté au panier"
   end
 
   def destroy
@@ -38,6 +38,7 @@ class CartItemsController < ApplicationController
 
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :item_id, :cart_id, :size_ids)
+    permited
   end
 
   def find_cart_items
