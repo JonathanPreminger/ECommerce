@@ -49,7 +49,7 @@ RSpec.describe Order, type: :model do
 
   context 'when testing last 3 orders' do
     it 'extracts 3 orders' do
-      create_list(:order, 10)
+      create_list(:order_to_be_treated, 10)
       expect(Order.last_3_orders.count).to eq(3)
     end
 
