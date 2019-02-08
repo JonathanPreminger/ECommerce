@@ -1,2 +1,3 @@
 $('tr#<%=@cart_item.id%>.cart-item').parent().remove();
+$(".badge.bg-base-1").html("<%=@current_cart.all_items%>");
 $("#flash").html('<%= j render partial: "shared/flash_messages" %>').show().delay(3000).fadeOut(600);
