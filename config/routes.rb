@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   get 'items/index', to: "items#index", as: "items_index"
   get 'items/:id/show', to: "items#show", as: "items_show"
+  get 'items/filter', to: "items#filter", as: "items_filter"
 
   get 'carts/show'
   devise_for :users, controllers: { sessions: "users/sessions", registrations: 'users/registrations' }
