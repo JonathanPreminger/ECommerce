@@ -34,6 +34,8 @@ class Item < ApplicationRecord
   validates :brand, presence: true, on: :create
 
   scope :alphabetical_order, -> { order(name: :asc) }
+  scope :by_brand, ->(brand_id) { where brand_id: brand_id }
+  scope :by_category, ->(category_id) { where category_id: category_id }
 
   def genre
     return "U" if male && female

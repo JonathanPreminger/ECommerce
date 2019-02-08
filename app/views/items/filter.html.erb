@@ -6,7 +6,7 @@
                 <div class="row-wrapper">
                 
                     <div class="row cols-xs-space cols-sm-space cols-md-space">
-                <% @items.each do |item| %>    
+                <% @items.each do |item| %>
                         <div class="col-lg-4">
                 
                             <div class="block product bg-transparent no-radius">
@@ -57,9 +57,8 @@
                         <div class="filter-checkbox">
                         <% @categories.each do |cat| %>
                           <%= form_tag items_filter_path, method: :get do %>
-
-                              <%= radio_button_tag :option, ["category", cat.id], false, onclick: "this.form.submit();"%>
-                               <%=label_tag  cat.name %>
+                            <%= radio_button_tag :option,["category", cat.id], false, id:"chkFilterCategoryWomen", onclick: "this.form.submit();"%>
+                            <%=label_tag  cat.name %>
                           <%end%>
                         <% end %>
                         </div>
@@ -98,9 +97,9 @@
                         <% @brands.each do |brand| %>
                           <%= form_tag items_filter_path, method: :get do %>
                             <%= radio_button_tag :option, ["brand", brand.id], false, onclick: "this.form.submit();"%>
-                             <%=label_tag  brand.name %>
-                          <%end%>
-                         <% end %>
+                            <%=label_tag  brand.name %>
+                           <% end%>
+                        <% end %>
                         </div>
                     </div>
                             
