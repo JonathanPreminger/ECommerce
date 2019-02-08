@@ -19,7 +19,7 @@ RSpec.describe CartItemsController, type: :controller do
       end
       it "displays http success response" do
         delete :destroy, params: { id: cart_item.id }, format: :js
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
       it "renders js destroy template" do
         delete :destroy, params: { id: cart_item.id }, format: :js
@@ -50,7 +50,7 @@ RSpec.describe CartItemsController, type: :controller do
       end
       it "displays http success response" do
         delete :reduce_quantity, params: { id: cart_item.id }, format: :js
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
       it "renders js destroy template" do
         delete :reduce_quantity, params: { id: cart_item.id }, format: :js

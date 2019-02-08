@@ -6,7 +6,7 @@ RSpec.describe ItemsController, type: :controller do
   describe "GET #index" do
     it "responds with success" do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
     it "renders the index view" do
       get :index
@@ -35,7 +35,7 @@ RSpec.describe ItemsController, type: :controller do
     context "with valid attributes" do
       it "responds with success" do
         get :show, params: { id: item.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
       it "responds renders the show view" do
         get :show, params: { id: item.id }
