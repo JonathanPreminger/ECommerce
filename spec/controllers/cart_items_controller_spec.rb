@@ -15,7 +15,7 @@ RSpec.describe CartItemsController, type: :controller do
       end
       it "raises flash messages" do
         delete :destroy, params: { id: cart_item.id }, format: :js
-        expect(flash[:alert]).to eq("Article retiré du panier")
+        expect(flash[:alert]).to eq("Oh, that's sad")
       end
       it "displays http success response" do
         delete :destroy, params: { id: cart_item.id }, format: :js
@@ -46,7 +46,7 @@ RSpec.describe CartItemsController, type: :controller do
     context "with unvalid params" do
       it "raises flash messages" do
         delete :reduce_quantity, params: { id: cart_item.id }, format: :js
-        expect(flash[:alert]).to eq("1 article supprimé du panier")
+        expect(flash[:alert]).to eq("Oh, that's sad")
       end
       it "displays http success response" do
         delete :reduce_quantity, params: { id: cart_item.id }, format: :js

@@ -13,25 +13,25 @@ class CartItemsController < ApplicationController
       @cart_item = @current_cart.cart_items.find_by(item_id: @chosen_item.id, size_id: @chosen_size)
       @cart_item.update!(quantity: @cart_item.quantity + 1)
     end
-    flash[:notice] = "Article ajouté au panier"
+    flash[:notice] = "I like your style"
   end
 
   def destroy
     @cart_item = @chosen_cart_item
     @cart_item.destroy
-    flash[:alert] = "Article retiré du panier"
+    flash[:alert] = "Oh, that's sad"
   end
 
   def add_quantity
     @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity += 1)
-    flash[:notice] = "1 article ajouté au panier"
+    flash[:notice] = "I like your style"
   end
 
   def reduce_quantity
     @cart_item = @chosen_cart_item
     @cart_item.update!(quantity: @cart_item.quantity -= 1) if @cart_item.quantity > 1
-    flash[:alert] = "1 article supprimé du panier"
+    flash[:alert] = "Oh, that's sad"
   end
 
   protected
