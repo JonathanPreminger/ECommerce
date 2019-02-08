@@ -15,14 +15,14 @@
                           <%=link_to "#{cart_item.item.name}", items_show_path(cart_item.item.id)%>
                         </span>
                         <span class="dc-quantity">x<%=cart_item.quantity%></span>
-                        <span class="dc-price"><%=number_to_currency(cart_item.item.price, unit:'€')%></span>
+                        <span class="dc-price"><%=number_to_currency(cart_item.item.price, unit:'$')%></span>
                     </div>
                 </div>
             </div>
             <%end%>
             <div class="dc-item py-4">
                 <span class="subtotal-text">Total</span>
-                <span class="subtotal-amount"><%=number_to_currency(@current_cart.tot, unit:'€')%></span>
+                <span class="subtotal-amount"><%=number_to_currency(@current_cart.tot, unit:'$')%></span>
             </div>
             <div class="py-4 text-center">
                 <ul class="inline-links inline-links--style-3">
