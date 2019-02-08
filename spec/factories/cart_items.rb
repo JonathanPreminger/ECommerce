@@ -19,5 +19,9 @@ FactoryBot.define do
     quantity { Faker::Number.number(1) }
     item
     size
+
+    trait :for_cart do
+      association(:line_item, factory: :cart)
+    end
   end
 end
