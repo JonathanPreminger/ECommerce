@@ -1,3 +1,4 @@
 $('tr#<%=@cart_item.id%>.cart-item').parent().remove();
 $(".badge.bg-base-1").html("<%=@current_cart.all_items%>");
+$(".mt-3").html("Total: <%= number_to_currency(@current_cart.tot, unit:'€') %>");
 $("#flash").html('<%= j render partial: "shared/flash_messages" %>').show().delay(3000).fadeOut(600);
