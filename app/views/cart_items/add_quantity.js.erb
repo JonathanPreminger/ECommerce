@@ -1,3 +1,4 @@
 $("#total-<%=@chosen_cart_item.id%>").html("<%=number_to_currency(@chosen_cart_item.subtotal, unit:'€')%>");
 $("#quantity-<%=@chosen_cart_item.id%>").html("<%=@chosen_cart_item.quantity%>");
+$(".badge.bg-base-1").html("<%=@current_cart.all_items%>");
 $("#flash").html('<%= j render partial: "shared/flash_messages" %>').show().delay(3000).fadeOut(600);
