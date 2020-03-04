@@ -164,7 +164,7 @@ GEM
       byebug (~> 10.0)
       pry (~> 0.10)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.4)
     rack (2.0.6)
     rack-protection (2.0.5)
       rack
@@ -328,7 +328,7 @@ DEPENDENCIES
   nyan-cat-formatter
   pg (>= 0.18, < 2.0)
   pry-byebug (~> 3.6)
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.1, >= 5.2.1.1)
   rails-controller-testing
   rspec-rails (~> 3.7, >= 3.7.2)
